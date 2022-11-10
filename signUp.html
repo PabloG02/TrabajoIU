@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/signUp.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="./js/commonFunctions.js" defer></script>
+    <script src="./js/pageBuilding.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+    <script src="./js/validation/personValidation.js" defer></script>
+    <script src="./js/validation/userValidation.js" defer></script>
+    
+    <script src="./js/remote.js" defer></script>
+    <script src="./js/signUp.js" defer></script>
+    <script src="./locale/language.js" defer></script>
+    <script src="./js/md5.js" defer></script>
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="flexbox">
+        <form id="formulario" method="dialog">
+            <div id="dni-container">
+                <label for="dni">DNI</label><br>
+                <input type="text" id="dni" name="dni" class="textBox textBox-sizing">
+            </div>
+            <div id="name-container">
+                <label for="name">Nombre</label><br>
+                <input type="text" id="name" name="nombre_persona" class="textBox textBox-sizing">
+            </div>
+            <div id="surname-container">
+                <label for="surname">Apellidos</label><br>
+                <input type="text" id="surname" name="apellidos_persona" class="textBox textBox-sizing">
+            </div>
+            <div id="birthDate-container">
+                <label for="birthDate">Fecha de nacimiento</label><br>
+                <input type="date" id="birthDate" name="fechaNacimiento_persona" min="1900-01-01" class="textBox textBox-sizing">
+            </div>
+            <div id="address-container">
+                <label for="address">Dirección</label><br>
+                <input type="text" id="address" name="direccion_persona" class="textBox textBox-sizing">
+            </div>
+            <div id="email-container">
+                <label for="email">Correo electrónico</label><br>
+                <input type="email" id="email" name="email_persona" class="textBox textBox-sizing">
+            </div>
+            <!-- TODO: Photo is not been uploaded -->
+            <div id="phone-container">
+                <label for="phone">Teléfono</label><br>
+                <input type="tel" id="phone" name="telefono_persona" class="textBox textBox-sizing">
+            </div>
+            <div id="photo-container" style="display: flex; align-items: center; gap: 20px;">
+                <div>
+                    <label for="photo">Fotografía</label>
+                    <input type="file" id="photo" name="foto_persona" accept="image/*" class="filePicker">
+                </div>
+            </div>
+            <div id="username-container">
+                <label for="username">Nombre de usuario</label><br>
+                <input type="text" id="username" name="usuario" class="textBox textBox-sizing">
+            </div>
+            <div id="password-container">
+                <label for="password">Contraseña</label><br>
+                <input type="password" id="password" name="contrasena" class="textBox textBox-sizing">
+            </div>
+            <img id="submitImage" src="images\send_color_unofficial.png">
+        </form>
+    </div>
+    <div class="flexbox">
+        <div id="error-messages"></div>
+    </div>
+    <div class="modal">
+        <div id="success-messages"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="./js/commonFunctions.js" defer></script>
+        <script src="./js/pageBuilding.js" defer></script>
+        <script src="./js/theme.js" defer></script>
+        
+        <script src="./js/remote.js" defer></script>
+        <script src="./js/management/functionalityManagement.js" defer></script>
+        <script src="./locale/language.js" defer></script>
+        <script src="./js/validation/functionalityValidation.js" defer></script>
+        <title>Functionality management</title>
+    </head>
+    <body>
+        <div class="flexbox" style="margin-bottom: 15px;">
+            <div class="container flexbox">
+                <span><img src="images/plus_color.svg" class="svg add" title="Añadir"></span>
+                <span><img src="images/magnifying_glass_tilted_left_color.svg" class="svg search"></span>
+            </div>
+        </div>
+        <div class="flexbox">
+            <div class="container flexbox" id="table-container">
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal-content"></div>
+            <div id="success-messages"></div>
+            <div id="error-messages"></div>
+        </div>
+    </body>
+</html>

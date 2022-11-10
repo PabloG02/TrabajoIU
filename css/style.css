@@ -1,0 +1,383 @@
+.light-mode {
+    --background-primary: #f0f0f2;
+    --text-color: #1f1f1f;
+    --text-color-success: #191c1a;
+    --text-color-error: #2d1516;
+    --div-color: #f8fafd;
+    --div-color-hover: #c2e7ff;
+    --div-color-success: #eef6ee;
+    --div-color-error: #ffdad9;
+    
+    --button-color: #0b57d0;
+    --button-color-hover: #041e49;
+    --text-button-color: #ffffff;
+
+    --input-background-color: #f4f2f6;
+    --input-background-color-hover: #ebe9ed;
+
+    --theme-switch: #f3f6fc;
+    --outline-color: #747775;
+}
+
+.dark-mode {
+    --background-primary: #1f1f1f;
+    --text-color: #e3e3e3;
+    --text-color-success: #e1e3de;
+    --text-color-error: #ffdad9;
+    --div-color: #28292a;
+    --div-color-hover: #004a77;
+    --div-color-success: #1e2621;
+    --div-color-error: #5c3f3f; /*/sgfrhtyjhdgfsd**/
+
+    --button-color: #a8c7fa;
+    --button-color-hover: #d3e3fd;
+    --text-button-color: #062e6f;
+
+    --input-background-color: #222426;
+    --input-background-color-hover: #2a2c2e;
+
+    --theme-switch: #2d2f31;
+    --outline-color: #8e918f;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-primary);
+    color: var(--text-color);
+}
+
+/* Header style*/
+
+header {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 90px;
+    align-items: center;
+}
+
+header h1 {
+    grid-column-start: 2;
+    justify-self: center;
+}
+
+#headerLeftContainer {
+    display: flex;
+    gap: 10px;
+    justify-content: right;
+}
+
+#languagesDiv {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    justify-self: right;
+    background-color: var(--div-color);
+    border-radius: 8px;
+    padding: 20px 5px;
+    min-width: 150px;
+    max-width: 225px;
+}
+
+#userDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--div-color);
+    border-radius: 8px;
+    padding: 14.5px 15px;
+    max-width: 225px;
+}
+
+#signOut {
+    margin-top: 3px;
+    width: 15px;
+}
+
+/* Theme toggle style*/
+
+#themeToggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    border: 2px solid var(--outline-color);
+    font-size: 16px;
+    background-color: var(--theme-switch);
+    padding: 10px;
+    border-radius: 100%;
+}
+
+/* Common styles*/
+
+.container {
+    background-color: var(--div-color);
+    width: 85%;
+    /*max-width: 1000px;*/
+    max-width: max-content;
+    min-width: 300px;
+
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+}
+
+.textBox-sizing {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.textBox, select{
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+    border: 1.5px none;
+    border-bottom: 1.5px solid rgb(216, 216, 216);
+    border-radius: 4px;
+    padding: 7px;
+    margin-top: 8px;
+    transition: background-color 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), border 200ms cubic-bezier(0, 0, 0, 1);
+}
+
+.textBox:hover, select:hover{
+    background-color: var(--input-background-color-hover);
+}
+
+.textBox:focus, select:focus{
+    border-bottom: 1.5px solid rgb(0, 134, 243);
+    outline: none;
+}
+
+.filePicker {
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+    border: 1.5px none;
+    border-radius: 4px;
+    padding: 7px;
+    transition: background-color 0.5s;
+}
+
+.filePicker:hover {
+    background-color: var(--input-background-color-hover);
+}
+
+.imageButtonDisabled {
+    filter: grayscale(100%);
+    cursor: not-allowed;
+}
+
+/* Login.html style*/
+
+#loginForm {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px 60px 20px 60px;
+    width: 85%;
+    max-width: 300px;
+    margin-bottom: 0px;
+}
+
+#forgotPassword {
+    font-size: 0.75rem;
+    place-self: end;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+#signUpSingInDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+#signUp {
+    background-color: var(--div-color);
+    color: var(--button-color);
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    outline: 1px solid var(--outline-color);
+    border-radius: 4px;
+    padding: 8px;
+    transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+#signUp:hover {
+    background-color: rgb(127, 127, 127, 0.25);
+}
+
+#submitButton {
+    background-color: var(--button-color);
+    color: var(--text-button-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    padding: 8px;
+    transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+#submitButton:hover {
+    background-color: var(--button-color-hover);
+}
+
+
+
+#changePasswordForm {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 100%;
+    grid-template-rows: 60px 60px 60px;
+    width: 85%;
+    max-width: 300px;
+    margin-bottom: 0px;
+}
+
+/* Menu's hyperlinks style*/
+
+.grid {
+    margin: 50px 20px 0px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 500px));
+    grid-template-rows: repeat(4, 112px);
+    justify-content: center;
+    gap: 10px;
+}
+
+.hyperlink {
+    background-color: var(--div-color);
+    border-radius: 8px;
+    transition: background-color 300ms cubic-bezier(0.2, 0, 0, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 475;
+}
+
+.hyperlink:hover {
+    background-color: var(--div-color-hover);
+    
+}
+
+.hyperlinkText {
+    text-align: center;
+    margin: 0px 20px;
+}
+
+/* Management sections style */
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid var(--outline-color);
+    padding: 7px 15px;
+    text-align: center;
+}
+
+.svg{
+    width: 40px;
+}
+
+span > .add {
+    margin-right: 20px;
+    filter: brightness(120%);
+}
+
+#managementForm {
+    margin: 0px 15px;
+}
+
+#submitImage {
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    margin-top: 8px;
+    height: 40px;
+    transition: background-color 0.3s;
+}
+
+#submitImage:hover {
+    background-color: rgba(204, 230, 255, 0.5);
+}
+
+#submitImage:active {
+    background-color: rgba(138, 195, 252, 0.5);
+}
+
+input[type="text"]:read-only, input[type="date"]:read-only {
+    background-color: var(--div-color);
+    cursor: not-allowed;
+}
+
+.error {
+    background-color: var(--div-color-error);
+}
+
+
+
+.modal {
+    display: none;  /* Not rendered by default */
+    position: fixed;  /* the position and dimensions of an element with position:fixed are always relative to the initial containing block. 
+                      This is normally the viewport: the browser window or the paper’s page box.*/
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content, #success-messages, #error-messages {
+    border-radius: 8px;
+}
+
+.modal > .modal-content, .modal > #success-messages, .modal > #error-messages {
+    box-shadow: 0px 5px 5px -3px rgb(0,0,0,0.2), 
+                0px 8px 10px 1px rgb(0,0,0,0.14), 
+                0px 3px 14px 2px rgb(0,0,0,0.12);
+}
+
+.modal-content {
+    width: 75%;
+    max-width: 850px;
+    margin: 130px auto 20px;
+    padding: 30px;
+    background-color: var(--div-color);
+}
+
+#success-messages {
+    display: none;
+    width: 75%;
+    max-width: 500px;
+    margin: 130px auto 20px;
+    padding: 10px 30px;
+
+    background-color: var(--div-color-success);
+    color: var(--text-color-success);
+}
+
+#error-messages {
+    display: none;
+    width: 85%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    background-color: var(--div-color-error);
+    color: var(--text-color-error);
+}
+
+
