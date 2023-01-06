@@ -25,9 +25,11 @@ function checkActionId(action) {
     }
 
     if(errorDetected){
+        actionIdField.classList.remove('correct');
         actionIdField.classList.add('error');
     } else {
         actionIdField.classList.remove('error');
+        actionIdField.classList.add('correct');
         removeErrorMessage('actionId');
     }
 
@@ -54,9 +56,11 @@ function checkActionName(action) {
     }
 
     if(errorDetected){
+        actionNameField.classList.remove('correct');
         actionNameField.classList.add('error');
     } else {
         actionNameField.classList.remove('error');
+        actionNameField.classList.add('correct');
         removeErrorMessage('actionName');
     }
 
@@ -83,9 +87,11 @@ function checkActionDescription(action) {
     }
 
     if(errorDetected){
+        actionDescriptionField.classList.remove('correct');
         actionDescriptionField.classList.add('error');
     } else {
         actionDescriptionField.classList.remove('error');
+        actionDescriptionField.classList.add('correct');
         removeErrorMessage('actionDescription');
     }
 

@@ -431,10 +431,13 @@ input[type="text"]:read-only, input[type="date"]:read-only {
     cursor: not-allowed;
 }
 
+.correct {
+    background-color: var(--div-color-success);
+}
+
 .error {
     background-color: var(--div-color-error);
 }
-
 
 
 .modal {

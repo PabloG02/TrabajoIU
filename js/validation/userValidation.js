@@ -28,9 +28,11 @@ function checkUsername(action) {
     }
 
     if(errorDetected){
+        userField.classList.remove('correct');
         userField.classList.add('error');
     } else {
         userField.classList.remove('error');
+        userField.classList.add('correct');
         removeErrorMessage('usuario');
     }
 
@@ -57,9 +59,11 @@ function checkPassword(action) {
     }
 
     if(errorDetected){
+        passwordField.classList.remove('correct');
         passwordField.classList.add('error');
     } else {
         passwordField.classList.remove('error');
+        passwordField.classList.add('correct');
         removeErrorMessage('password');
     }
 
@@ -86,9 +90,11 @@ function checkPasswordCustom(fieldId, action) {
     }
 
     if(errorDetected){
+        passwordField.classList.remove('correct');
         passwordField.classList.add('error');
     } else {
         passwordField.classList.remove('error');
+        passwordField.classList.add('correct');
         removeErrorMessage('password');
     }
 

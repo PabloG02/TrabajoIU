@@ -25,9 +25,11 @@ function checkFunctionalityId(action) {
     }
 
     if(errorDetected){
+        functionalityIdField.classList.remove('correct');
         functionalityIdField.classList.add('error');
     } else {
         functionalityIdField.classList.remove('error');
+        functionalityIdField.classList.add('correct');
         removeErrorMessage('functionalityId');
     }
 
@@ -54,9 +56,11 @@ function checkFunctionalityName(action) {
     }
 
     if(errorDetected){
+        functionalityNameField.classList.remove('correct');
         functionalityNameField.classList.add('error');
     } else {
         functionalityNameField.classList.remove('error');
+        functionalityNameField.classList.add('correct');
         removeErrorMessage('functionalityName');
     }
 
@@ -83,9 +87,11 @@ function checkFunctionalityDescription(action) {
     }
 
     if(errorDetected){
+        functionalityDescriptionField.classList.remove('correct');
         functionalityDescriptionField.classList.add('error');
     } else {
         functionalityDescriptionField.classList.remove('error');
+        functionalityDescriptionField.classList.add('correct');
         removeErrorMessage('functionalityDescription');
     }
 

@@ -25,9 +25,11 @@ function checkRoleId(action) {
     }
 
     if(errorDetected){
+        roleIdField.classList.remove('correct');
         roleIdField.classList.add('error');
     } else {
         roleIdField.classList.remove('error');
+        roleIdField.classList.add('correct');
         removeErrorMessage('roleId');
     }
 
@@ -54,9 +56,11 @@ function checkRoleName(action) {
     }
 
     if(errorDetected){
+        roleNameField.classList.remove('correct');
         roleNameField.classList.add('error');
     } else {
         roleNameField.classList.remove('error');
+        roleNameField.classList.add('correct');
         removeErrorMessage('roleName');
     }
 
@@ -83,9 +87,11 @@ function checkRoleDescription(action) {
     }
 
     if(errorDetected){
+        roleDescriptionField.classList.remove('correct');
         roleDescriptionField.classList.add('error');
     } else {
         roleDescriptionField.classList.remove('error');
+        roleDescriptionField.classList.add('correct');
         removeErrorMessage('roleDescription');
     }
 

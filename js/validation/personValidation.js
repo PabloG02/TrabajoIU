@@ -68,9 +68,11 @@ function checkDNI(action) {
     }
 
     if(errorDetected){
+        dniField.classList.remove('correct');
         dniField.classList.add('error');
     } else {
         dniField.classList.remove('error');
+        dniField.classList.add('correct');
         removeErrorMessage('dni');
     }
 
@@ -97,9 +99,11 @@ function checkName(action) {
     }
 
     if(errorDetected){
+        nameField.classList.remove('correct');
         nameField.classList.add('error');
     } else {
         nameField.classList.remove('error');
+        nameField.classList.add('correct');
         removeErrorMessage('name');
     }
 
@@ -126,9 +130,11 @@ function checkSurname(action) {
     }
 
     if(errorDetected){
+        surnameField.classList.remove('correct');
         surnameField.classList.add('error');
     } else {
         surnameField.classList.remove('error');
+        surnameField.classList.add('correct');
         removeErrorMessage('surname');
     }
 
@@ -136,10 +142,10 @@ function checkSurname(action) {
 }
 
 function checkBirthDate(action){
-    const addressField = document.getElementById("birthDate");
+    const birthDateField = document.getElementById("birthDate");
     let errorDetected = false;
 
-    if(action != 'SEARCH' && isEmpty(addressField)){
+    if(action != 'SEARCH' && isEmpty(birthDateField)){
         addErrorMessage('error_birthDate_empty', 'birthDate');
         errorDetected = true;
     } else if (new Date(document.getElementById('birthDate').value) > new Date()){
@@ -148,9 +154,11 @@ function checkBirthDate(action){
     }
 
     if(errorDetected){
-        addressField.classList.add('error');
+        birthDateField.classList.remove('correct');
+        birthDateField.classList.add('error');
     } else {
-        addressField.classList.remove('error');
+        birthDateField.classList.remove('error');
+        birthDateField.classList.add('correct');
         removeErrorMessage('birthDate');
     }
 
@@ -177,9 +185,11 @@ function checkAddress(action){
     }
 
     if(errorDetected){
+        addressField.classList.remove('correct');
         addressField.classList.add('error');
     } else {
         addressField.classList.remove('error');
+        addressField.classList.add('correct');
         removeErrorMessage('address');
     }
 
@@ -212,9 +222,11 @@ function checkEmail(action) {
     }
     
     if(errorDetected){
+        emailField.classList.remove('correct');
         emailField.classList.add('error');
     } else {
         emailField.classList.remove('error');
+        emailField.classList.add('correct');
         removeErrorMessage('email');
     }
 
@@ -238,9 +250,11 @@ function checkPhone(action) {
     }
     
     if(errorDetected){
+        phoneField.classList.remove('correct');
         phoneField.classList.add('error');
     } else {
         phoneField.classList.remove('error');
+        phoneField.classList.add('correct');
         removeErrorMessage('phone');
     }
 
@@ -293,9 +307,11 @@ function checkPhoto(action) {
     } 
     
     if(errorDetected){
+        photoField.classList.remove('correct');
         photoField.classList.add('error');
     } else {
         photoField.classList.remove('error');
+        photoField.classList.add('correct');
         removeErrorMessage('photo');
     }
 
