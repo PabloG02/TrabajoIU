@@ -62,6 +62,7 @@ function createSidebar(){
     navElement.appendChild(navigationElement);
     navElement.appendChild(ulElement);
     document.body.append(navElement);
+    document.body.style.marginLeft = `${navElement.getBoundingClientRect().width}px`;
 
     
     document.getElementsByClassName('navigation')[0].addEventListener('click', ()=>{
