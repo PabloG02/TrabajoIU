@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
-createHeader('headerActionManagement', getCookie('user'), './menu.html');
+createHeader('headerActionManagement', getCookie('user'), undefined);
 createSidebar();
 
 // Populates table on site load.
