@@ -75,15 +75,17 @@ function createHyperlinkSidebar(href, img, text){
     liElement.className = 'navbar-item';
     let aElement = document.createElement('a');
     aElement.href = `./${href}`;
+
     let imgElement = document.createElement('img');
-    imgElement.src = `./images/${img}`;
-    let spanElement = document.createElement('span');
-    spanElement.innerText = text;
-    console.log(window.location.pathname);
-    if (window.location.pathname === `/${href}`){
+    let imgSrc = `./images/${img}`;
+    if (window.location.pathname.split("/").pop() === href){
         liElement.classList.add('current');
-        imgElement.src = imgElement.src.replace('regular', 'filled');
+        imgSrc = imgSrc.replace('regular', 'filled');
     }
+    imgElement.src = imgSrc;
+
+    let spanElement = document.createElement('span');
+    spanElement.innerText = text;    
     
     liElement.appendChild(aElement);
     aElement.appendChild(imgElement);
