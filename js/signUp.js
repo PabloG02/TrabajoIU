@@ -30,7 +30,7 @@ passwordField.addEventListener("blur", checkPassword);
 submitButton.addEventListener("click", checkFormSignUp);
 
 function checkFormSignUp(e){
-    if(checkFormPerson(e) & checkFormUser(e)){
+    if(checkFormPerson(e) & checkUsername() & checkPassword()){
         sendAuthSignUpRequestAjax();
         return true;
     } else {

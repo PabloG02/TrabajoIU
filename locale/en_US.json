@@ -1,6 +1,7 @@
 {
     "headerLogin": "User login",
     "headerSignUp": "Sign up",
+    "headerRecoverPassword": "Recover password",
     "headerChangePassword" : "Change password",
     "headerMenu": "Menu 2º Assignment",
     "headerPersonManagement": "Person management",
@@ -20,6 +21,8 @@
     "user": "User",
     "username": "Username",
     "password": "Password",
+    "oldPassword": "Current password",
+    "newPassword": "New password",
     "role": "Role",
     "roleId": "Role ID",
     "roleName": "Role name",
@@ -41,8 +44,10 @@
     "deleteTitle": "Delete",
     "detailsTitle": "See details",
 
+    "goBack": "Go back",
     "signUp": "Sign up",
     "logIn": "Log in",
+    "signOut": "Sign out",
     "forgotPassword": "Forgot your password?",
     "changePassword" : "Change password",
     "personManagement": "Person management",
@@ -52,6 +57,8 @@
     "actionManagement": "Action management",
     "rolAccFunManagement": "Rolaccionfuncionalidad management",
 
+    "success_signUp": "Sign Up successful.",
+    "success_changePassword": "Password changed successfully.",
 
     "error_dni_empty": "The DNI is a mandatory field. It cannot be empty.",
     "error_dni_too_short": "The DNI field requires at least 9 characters.",
@@ -67,13 +74,12 @@
     "error_surname_too_short": "Surname requires at least 5 characters.",
     "error_surname_too_long": "Surnames accept at most 100 characters.",
     "error_surname_invalid_characters": "Invalid characters have been entered. Surnames can only contain letters (with or without accent), hyphens and spaces.",
-
     "error_birthDate_empty": "The date of birth is a required field. It cannot be empty.",
-
+    "error_birthDate_future": "The date of birth is superior to today's date.",
     "error_address_empty": "The address is a required field. It cannot be empty.",
     "error_address_too_short": "The address requires at least 10 characters.",
     "error_address_too_long": "The address accepts at most 200 characters.",
-    "error_address_invalid_characters": "Invalid characters have been entered.", 
+    "error_address_invalid_characters": "Invalid characters have been entered. The address can only contain letters, numbers, spaces, ‘/’,’-’,’,’,’º’,‘ª’.", 
     "error_phone_empty": "Phone is a required field. It cannot be empty.",
     "error_phone_too_short": "The Phone field requires at least 9 numbers.",
     "error_phone_too_long": "The Phone field accepts at most 9 numbers.",
@@ -81,8 +87,7 @@
     "error_email_empty": "Mail is a mandatory field. It cannot be empty.",
     "error_email_too_short": "Mail requires at least 8 characters.",
     "error_email_too_long": "Mail accepts at most 45 numbers.",
-    "error_email_invalid_characters": "The entered email is invalid.",
-    
+    "error_email_invalid_characters": "The entered email is invalid. Check that you've entered valid characters.",
     "error_photo_too_short": "The photo name requires at least 6 characters.",
     "error_photo_too_long": "The photo name must be at most 40 characters long.",
     "error_photo_invalid_characters": "The image name contains invalid characters. Only letters without accent are allowed.",
@@ -97,8 +102,6 @@
     "error_password_too_long": "Password accepts at most 45 characters.",
     "error_password_invalid_characters": "Invalid characters have been entered. The password can only contain letters without accents, numbers, - or _.",
 
-
-
     "error_roleId_empty": "The id_rol is a mandatory field. It cannot be empty.",
     "error_roleId_too_long": "The role id entered is too large. It must not exceed 4 digits.",
     "error_roleId_invalid_characters": "Invalid characters have been entered. The role_id can only contain numbers.",
@@ -112,7 +115,7 @@
     "error_roleDescription_invalid_characters": "Invalid characters have been entered. The role description must not include =, <, >, $, {}, [].",
 
     "error_functionalityId_empty": "The functionality_id is a mandatory field. It cannot be empty.",
-    "error_functionalityId_too_long": "The functionality id entered is too large. It must not exceed ${maxLength} digits.",
+    "error_functionalityId_too_long": "The functionality id entered is too large. It must not exceed 4 digits.",
     "error_functionalityId_invalid_characters": "Invalid characters have been entered. Functionality_id can only contain numbers.",
     "error_functionalityName_empty": "The functionality name is a mandatory field. It cannot be empty.",
     "error_functionalityName_too_short": "The functionality name requires at least 6 characters.",
@@ -124,7 +127,7 @@
     "error_functionalityDescription_invalid_characters": "Invalid characters have been entered. The functionality description must not include =, <, >, $, {}, [].",
 
     "error_actionId_empty": "The action_id is a mandatory field. It cannot be empty.",
-    "error_actionId_too_long": "The action id entered is too large. It must not exceed ${maxLength} digits.",
+    "error_actionId_too_long": "The action id entered is too large. It must not exceed 4 digits.",
     "error_actionId_invalid_characters": "Invalid characters have been entered. The action_id can only contain numbers.",
     "error_actionName_empty": "The action name is a required field. It cannot be empty.",
     "error_actionName_too_short": "The action name requires at least 6 characters.",
@@ -137,52 +140,81 @@
 
 
 
-    "SQL_OK":"SQL_OK",
-    "SQL_KO":"SQL_KO",
-    "CONEXION_KO":"CONEXION_KO",
-    "RECORDSET_VACIO":"RECORDSET_VACIO",
-    "RECORDSET_DATOS":"RECORDSET_DATOS",
+    "SQL_OK": "The operation has been carried out successfully.",
+    "SQL_KO": "SQL_KO",
+    "CONEXION_KO": "CONEXION_KO",
+    "RECORDSET_VACIO": "This query has been satisfactory but has not returned results.",
+    "RECORDSET_DATOS": "Table updated correctly.",
 
-    "REGISTRAR_OK":"El registro se ha realizado con éxito.",
-    "CAMBIAR_contrasena_KO":"CAMBIAR_contrasena_KO",
-    "CAMBIAR_contrasena_OK":"CAMBIAR_contrasena_OK",
+    "REGISTRAR_OK": "The registration has been carried out successfully.",
+    "CAMBIAR_contrasena_KO": "CAMBIAR_contrasena_KO",
+    "CAMBIAR_contrasena_OK": "CAMBIAR_contrasena_OK",
 
-    "LOGIN_OK":"El inicio de sesión se ha realizado con éxito",
-    "USUARIO_PASS_KO":"La contraseña introducida no es correcta.",
-    "USUARIO_LOGIN_KO":"USUARIO_LOGIN_KO",
+    "LOGIN_OK": "The login has been done successfully",
+    "USUARIO_PASS_KO": "The introduced password is not correct.",
+    "USUARIO_LOGIN_KO": "The user entered does not exist.",
 
-    "dni_EXISTE_EN_persona_KO": "The operation could not be carried out. A person with that DNI already exists in the database",
-    "dni_NO_EXISTE_EN_persona_KO": "The operation could not be performed. You are trying to delete a person through a DNI that does not exist in the database.",
+    "dni_EXISTE_en_persona_KO": "The operation could not be carried out. A person with that DNI already exists in the database",
+    "dni_NO_EXISTE_en_persona_KO": "The operation could not be performed. You are trying to delete a person through a DNI that does not exist in the database.",
     "dni_EXISTE_EN_usuario_KO": "The operation could not be carried out. This person has an associated user. If you want to delete it, first remove its user.",
-    "dni_NO_EXISTE_EN_usuario_KO":"dni_NO_EXISTE_EN_usuario_KO",
-    "email_EXISTE_EN_persona_KO":"No se pudo llevar a cabo la operación. Ya existe una persona con ese email en la base de datos.",
+    "dni_NO_EXISTE_EN_usuario_KO": "dni_NO_EXISTE_EN_usuario_KO",
+    "email_EXISTE_en_persona_KO": "The operation could not be carried out. There is already a person with that email in the database.",
 
-    "usuario_EXISTE_EN_usuario_KO":"No se pudo llevar a cabo la operación. Ya existe un usuario con ese nombre de usuario en la base de datos",
-    "admin_no_se_puede_modificar_KO":"admin_no_se_puede_modificar_KO",
-    "admin_no_se_puede_borrar_KO":"admin_no_se_puede_borrar_KO",
+    "usuario_EXISTE_EN_usuario_KO": "The operation could not be carried out. There is already a user with that username in the database",
+    "admin_no_se_puede_modificar_KO": "You can't modify the user of Admin.",
+    "admin_no_se_puede_borrar_KO": "You can't erase the user of Admin.",
 
-    "id_rol_EXISTE_EN_usuario_KO":"id_rol_EXISTE_EN_usuario_KO",
-    "no_puede_borrar_rol_adminybasico":"no_puede_borrar_rol_adminybasico",
-    "no_puede_editar_rol_adminybasico":"no_puede_editar_rol_adminybasico",
-    "id_rol_EXISTE_EN_rol_KO":"id_rol_EXISTE_EN_rol_KO",
-    "id_rol_NO_EXISTE_EN_rol_KO":"id_rol_NO_EXISTE_EN_rol_KO",
-    "id_rol_EXISTE_EN_rolaccionfuncionalidad_KO":"id_rol_EXISTE_EN_rolaccionfuncionalidad_KO",
+    "id_rol_EXISTE_en_usuario_KO": "The operation could not be carried out. There is at least one user who has said assigned role.",
+    "no_puede_borrar_rol_adminybasico": "You cannot erase the roles of Admin and Básico.",
+    "no_puede_editar_rol_adminybasico": "You cannot erase the roles of Admin and Básico.",
+    "id_rol_EXISTE_en_rol_KO": "The operation could not be carried out. That id_rol already exists in the database.",
+    "id_rol_NO_EXISTE_en_rol_KO": "The operation could not be carried out. That id_rol does not exist in the database.",
+    "id_rol_EXISTE_en_rolaccionfuncionalidad_KO": "The operation could not be carried out. This role has assigned to it at least one permit in Rolaccionfuncionalidad.",
 
 
-    "id_accion_EXISTE_EN_accion_KO":"id_accion_EXISTE_EN_accion_KO",
-    "id_accion_NO_EXISTE_EN_accion_KO":"id_accion_NO_EXISTE_EN_accion_KO",
-    "id_accion_EXISTE_EN_rolaccionfuncionalidad_KO":"id_accion_EXISTE_EN_rolaccionfuncionalidad_KO",
-    "no_puede_editar_acciones_admin":"no_puede_editar_acciones_admin",
+    "id_accion_EXISTE_en_accion_KO": "The operation could not be carried out. That id_accion already exists in the database.",
+    "id_accion_NO_EXISTE_en_accion_KO": "The operation could not be carried out. That id_accion does not exist in the database.",
+    "id_accion_EXISTE_en_rolaccionfuncionalidad_KO": "The operation could not be carried out. This action is assigned at least to one role in Rolaccionfuncionalidad.",
+    "no_puede_editar_acciones_admin": "The actions of the Admin cannot be edited.",
 
-    "id_funcionalidad_EXISTE_EN_funcionalidad_KO":"id_funcionalidad_EXISTE_EN_funcionalidad_KO",
-    "id_funcionalidad_NO_EXISTE_EN_funcionalidad_KO":"id_funcionalidad_NO_EXISTE_EN_funcionalidad_KO",
-    "id_funcionalidad_EXISTE_EN_rolaccionfuncionalidad_KO":"id_funcionalidad_EXISTE_EN_rolaccionfuncionalidad_KO",
-    "no_puede_editar_funcionalidades_admin":"no_puede_editar_funcionalidades_admin",
-    "no_puede_borrar_funcionalidades_admin":"no_puede_borrar_funcionalidades_admin",
+    "id_funcionalidad_EXISTE_en_funcionalidad_KO": "The operation could not be carried out. That id_funcionalidad already exists in the database.",
+    "id_funcionalidad_NO_EXISTE_en_funcionalidad_KO": "The operation could not be carried out. That id_funcionalidad does not exist in the database.",
+    "id_funcionalidad_EXISTE_en_rolaccionfuncionalidad_KO": "he operation could not be carried out. This functionality is assigned at least to one role in Rolaccionfuncionalidad.",
+    "no_puede_editar_funcionalidades_admin": "You cannot edit the functionalities of the Admin.",
+    "no_puede_borrar_funcionalidades_admin": "You cannot erase the functionalities of the Admin.",
 
-    "no_puede_borrar_permiso_admin":"no_puede_borrar_permiso_admin",
-    "no_puede_editar_permiso_admin":"no_puede_editar_permiso_admin",
-    "permiso_EXISTE_EN_rolaccionfuncionalidad_KO":"permiso_EXISTE_EN_rolaccionfuncionalidad_KO",
-    "permiso_NO_EXISTE_EN_rolaccionfuncionalidad_KO":"permiso_NO_EXISTE_EN_rolaccionfuncionalidad_KO",
-    "prohibido_edit_rolaccionfuncionalidad":"prohibido_edit_rolaccionfuncionalidad"
+    "no_puede_borrar_permiso_admin": "You cannot erase the permissions of the Admin.",
+    "no_puede_editar_permiso_admin": "no_puede_editar_permiso_admin",
+    "permiso_EXISTE_en_rolaccionfuncionalidad_KO": "The operation could not be carried out. This role already has this permission.",
+    "permiso_NO_EXISTE_en_rolaccionfuncionalidad_KO": "The operation could not be carried out. This role does not have this permission.",
+    "prohibido_edit_rolaccionfuncionalidad": "prohibido_edit_rolaccionfuncionalidad",
+
+    "MENSAJE_ERROR_INTERNO": "Internal error. Contact the administrator",
+	"ERROR_AUTENTICACION": "Authentication Error. Identify yourself again",
+	"ERR_CONNECTION_REFUSED": "Connection refused. Contact the administrator",
+
+
+    "error_dni&username_do_not_match": "Password could not be changed. Your user does not have that DNI.",
+
+
+    "dniPlaceholder": "8 numbers and 1 letter",
+    "namePlaceholder": "3-45 letters, - and spaces",
+    "surnamePlaceholder": "5-100 letters, - and spaces",
+    "addressPlaceholder": "10-200 letters, numbers, spaces,‘/’,’-’,’, ’,’ º ’,‘ ª ’",
+    "phonePlaceholder": "Spanish phone of 9 digits",
+    "emailPlaceholder": "8-45 characters",
+    "photoPlaceholder": "6-40 letters without accent .jpg/.png",
+    "usernamePlaceholder": "3-45 letters without accent and numbers",
+    "passwordPlaceholder": "3-45 letters without accents, numbers, - o _",
+    "newPasswordPlaceholder": "3-45 letters without accents, numbers, - o _",
+    "oldPasswordPlaceholder": "3-45 letters without accents, numbers, - o _",
+    "roleIdPlaceholder": "1-4 numbers",
+    "roleNamePlaceholder": "6-48 letters without accents",
+    "roleDescriptionPlaceholder": "20-200 not =, <,>, $, {}, []",
+    "actionIdPlaceholder": "1-4 numbers",
+    "actionNamePlaceholder": "6-48 letters without accents",
+    "actionDescriptionPlaceholder": "20-200 not =, <,>, $, {}, []",
+    "functionalityIdPlaceholder": "1-4 numbers",
+    "functionalityNamePlaceholder": "6-48 letters without accents",
+    "functionalityDescriptionPlaceholder": "20-200 that is differrent to =, <, >, $, {}, []"
 }

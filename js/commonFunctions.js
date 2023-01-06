@@ -15,6 +15,7 @@ function deleteCookie(cookieName){
     document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
 }
 
+
 function isUserAuthenticated(){
     if(getCookie('user') === undefined){
         window.location.replace('./login.html');

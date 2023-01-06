@@ -142,6 +142,9 @@ function checkBirthDate(action){
     if(action != 'SEARCH' && isEmpty(addressField)){
         addErrorMessage('error_birthDate_empty', 'birthDate');
         errorDetected = true;
+    } else if (new Date(document.getElementById('birthDate').value) > new Date()){
+        addErrorMessage('error_birthDate_future', 'birthDate');
+        errorDetected = true;
     }
 
     if(errorDetected){
@@ -185,8 +188,11 @@ function checkAddress(action){
 
 function checkEmail(action) {
     const emailField = document.getElementById("email");
+    emailField.value = emailField.value.toLowerCase();
     const minLength = 8, maxLength = 45;
     let errorDetected = false;
+    // RFC 2822
+    let mailFormat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
     if(action != 'SEARCH' && isEmpty(emailField)){
         addErrorMessage('error_email_empty', 'email');
@@ -197,7 +203,10 @@ function checkEmail(action) {
     } else if (checkMaxLenght(emailField, maxLength)) {
         addErrorMessage('error_email_too_long', "email");
         errorDetected = true;
-    } else if (action != 'SEARCH' && !checkRegex(emailField, /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) { //TODO: corregir
+    } else if (action != 'SEARCH' && !checkRegex(emailField, mailFormat)) {
+        addErrorMessage('error_email_invalid_characters', "email");
+        errorDetected = true;
+    } else if (action == 'SEARCH' && checkRegex(emailField, /[^a-z0-9@#$%&'*+/=?^_`{|}\.-]/)) {
         addErrorMessage('error_email_invalid_characters', "email");
         errorDetected = true;
     }
@@ -211,7 +220,6 @@ function checkEmail(action) {
 
     return !errorDetected;
 }
-
 
 function checkPhone(action) {
     const phoneField = document.getElementById("phone");
@@ -239,7 +247,6 @@ function checkPhone(action) {
     return !errorDetected;
 }
 
-/*TODO: Fix*/
 function checkPhoto(action) {
     const photoField = document.getElementById("photo");
     const minLength = 6, maxLength = 40;
@@ -294,5 +301,3 @@ function checkPhoto(action) {
 
     return !errorDetected;
 }
-
-

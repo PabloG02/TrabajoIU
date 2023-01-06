@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
 createHeader('headerActionManagement', getCookie('user'), './menu.html');
+createSidebar();
 
 // Populates table on site load.
 requestAjax('accion', 'SEARCH');
@@ -87,7 +88,7 @@ function createForm(fieldsContent, action){
     let form = document.createElement('form');
     form.id = 'managementForm';
     
-    let actionId = createInputWithLabel('text', 'actionId', 'id_accion', fieldsContent, flags.readOnly);
+    let actionId = createInputWithLabel('text', 'actionId', 'id_accion', fieldsContent, flags.readOnly || flags.dontEditPK);
     let actionName = createInputWithLabel('text', 'actionName', 'nombre_accion', fieldsContent, flags.readOnly);
     let actionDescription = createInputWithLabel('text', 'actionDescription', 'descrip_accion', fieldsContent, flags.readOnly); /*TEXTAREA ¿?¿?¿?¿?¿??¿?¿¿?¿*/
     let submitButton = document.createElement('img');
@@ -142,6 +143,8 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     field.type = inputType;
     field.id = idTextBox;
     field.name = inputName;
+    if(locale[`${field.id}Placeholder`] !== undefined)
+        field.placeholder = locale[`${field.id}Placeholder`];
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;

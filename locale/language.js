@@ -32,14 +32,25 @@ async function populatePage(language){
     let locale = await getLocale(language);
     console.log(locale);
 
+    let title = document.getElementsByTagName('title')[0];
+    console.log(`${title.id}`);
+    title.textContent = locale[`${title.id.replace('title', 'header')}`];
+
     let header = document.getElementsByTagName('h1')[0];
     console.log(`${header.id}`);
     header.textContent = locale[`${header.id}`];
     
-    let buttons = ['add', 'search', 'edit', 'delete', 'details'];
+    let buttons = ['add', 'search', 'edit', 'delete', 'details',];
     for(let buttonType of buttons){
         for(let button of document.querySelectorAll(`.${buttonType}`)){
             button.title = locale[`${buttonType}Title`];
+        }
+    }
+
+    buttons = ['changePassword', 'signOut', 'goBack'];
+    for(let buttonType of buttons){
+        for(let button of document.querySelectorAll(`#${buttonType}`)){
+            button.title = locale[`${buttonType}`];
         }
     }
 
@@ -60,6 +71,12 @@ async function populatePage(language){
     for(let label of labels){
         console.log(label.htmlFor);
         label.innerText = locale[`${label.htmlFor}`];
+    }
+
+    let inputs = document.querySelectorAll('input[type=text],input[type=password],input[type=tel],input[type=email]');
+    for(let input of inputs){
+        if(locale[input.id+'Placeholder'] !== undefined)
+            input.placeholder = locale[input.id+'Placeholder'];
     }
 
     let hyperlinks = document.querySelectorAll('.hyperlink .hyperlinkText');
@@ -86,8 +103,8 @@ async function populatePage(language){
         changePassword.value = locale['changePassword'];
 
     let errors = document.getElementById('error-messages')?.childNodes;
-    for(let error of errors){
-        error.innerText = locale[`${error.id}`];
-    }
-    
+    if (errors != undefined)
+        for(let error of errors){
+            error.innerText = locale[`${error.id}`];
+        }
 }

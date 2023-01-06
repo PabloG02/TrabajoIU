@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
 createHeader('headerPersonManagement', getCookie('user'), './menu.html');
+createSidebar();
 
 // Populates table on site load.
 requestAjax('persona', 'SEARCH', false);
@@ -91,7 +92,7 @@ function createForm(fieldsContent, action){
     let form = document.createElement('form');
     form.id = 'managementForm';
     
-    let dni = createInputWithLabel('text', 'dni', 'dni', fieldsContent, flags.readOnly);
+    let dni = createInputWithLabel('text', 'dni', 'dni', fieldsContent, flags.readOnly || flags.dontEditPK);
     let name = createInputWithLabel('text', 'name', 'nombre_persona', fieldsContent, flags.readOnly);
     let surname = createInputWithLabel('text', 'surname', 'apellidos_persona', fieldsContent, flags.readOnly);
     let birthDate = createInputWithLabel('date', 'birthDate', 'fechaNacimiento_persona', fieldsContent, flags.readOnly);
@@ -171,6 +172,8 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     field.type = inputType;
     field.id = idTextBox;
     field.name = inputName;
+    if(locale[`${field.id}Placeholder`] !== undefined)
+        field.placeholder = locale[`${field.id}Placeholder`];
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;

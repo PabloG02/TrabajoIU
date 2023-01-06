@@ -21,6 +21,7 @@ themeToggle.addEventListener('click', () => {
 
 function createThemeToggle(theme){
     let themeToggle = document.createElement('button');
+    themeToggle.type = 'button';
     themeToggle.id = 'themeToggle';
     if(theme === 'dark-mode'){
         themeToggle.innerText = '☀️';

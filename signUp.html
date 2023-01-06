@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/signUp.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -16,7 +16,7 @@
     <script src="./js/signUp.js" defer></script>
     <script src="./locale/language.js" defer></script>
     <script src="./js/md5.js" defer></script>
-    <title>Sign up</title>
+    <title id="titleSignUp">Sign up</title>
 </head>
 <body>
     <div class="flexbox">
@@ -45,7 +45,6 @@
                 <label for="email">Correo electrónico</label><br>
                 <input type="email" id="email" name="email_persona" class="textBox textBox-sizing">
             </div>
-            <!-- TODO: Photo is not been uploaded -->
             <div id="phone-container">
                 <label for="phone">Teléfono</label><br>
                 <input type="tel" id="phone" name="telefono_persona" class="textBox textBox-sizing">

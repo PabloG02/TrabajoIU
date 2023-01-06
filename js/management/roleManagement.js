@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
 createHeader('headerRoleManagement', getCookie('user'), './menu.html');
+createSidebar();
 
 // Populates table on site load.
 requestAjax('rol', 'SEARCH');
@@ -87,7 +88,7 @@ function createForm(fieldsContent, action){
     let form = document.createElement('form');
     form.id = 'managementForm';
     
-    let roleId = createInputWithLabel('text', 'roleId', 'id_rol', fieldsContent, flags.readOnly);
+    let roleId = createInputWithLabel('text', 'roleId', 'id_rol', fieldsContent, flags.readOnly || flags.dontEditPK);
     let roleName = createInputWithLabel('text', 'roleName', 'nombre_rol', fieldsContent, flags.readOnly);
     let roleDescription = createInputWithLabel('text', 'roleDescription', 'descrip_rol', fieldsContent, flags.readOnly); /*TEXTAREA ¿?¿?¿?¿?¿??¿?¿¿?¿*/
     let submitButton = document.createElement('img');
@@ -142,6 +143,8 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     field.type = inputType;
     field.id = idTextBox;
     field.name = inputName;
+    if(locale[`${field.id}Placeholder`] !== undefined)
+        field.placeholder = locale[`${field.id}Placeholder`];
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;

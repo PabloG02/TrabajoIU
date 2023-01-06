@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
 createHeader('headerRolAccFunManagement', getCookie('user'), './menu.html');
+createSidebar();
 
 // Populates table on site load.
 requestAjaxRolAccFun();
@@ -86,7 +87,7 @@ function populateRow(tableElement, roles, functionality, action, rolAccFun){
     cells[0].innerHTML = functionality.nombre_funcionalidad;
     cells[1].innerHTML = action.nombre_accion;
 
-    console.log(rolAccFun);
+    //console.log(rolAccFun);
     let rolesWithPermissions = getRolesWithPermission(functionality.id_funcionalidad, action.id_accion, rolAccFun);
 
     for(let i = 0; i < roles.length; i++){
@@ -106,7 +107,7 @@ function getRolesWithPermission(id_funcionalidad, id_accion, rolAccFun){
     let roles = [];
     for(let i = 0; i < rolAccFun.length; i++){
         if(rolAccFun[i].id_accion.id_accion == id_accion && rolAccFun[i].id_funcionalidad.id_funcionalidad == id_funcionalidad){
-            console.log(rolAccFun[i].id_accion.id_accion + '  ' + rolAccFun[i].id_funcionalidad.id_funcionalidad + '  ' + rolAccFun[i].id_rol.id_rol);
+            //console.log(rolAccFun[i].id_accion.id_accion + '  ' + rolAccFun[i].id_funcionalidad.id_funcionalidad + '  ' + rolAccFun[i].id_rol.id_rol);
             roles.push(rolAccFun[i].id_rol.id_rol);
         }
     }
@@ -232,14 +233,14 @@ async function changeRolAccFun(e, rolId, functionalityId, actionId){
                 resolve(res);
             }
         }).fail( function( jqXHR ) {  //TODO
-            //mensajeHTTPFAIL(jqXHR.status);
+            httpStatusCodeToMessage(jqXHR.status);
             console.log(jqXHR.status);
         });
     });
     await promise.then((res) => {
         console.log(res);
         
-
+        resetModalContents();
         controller = new AbortController();
         const modal = document.getElementsByClassName('modal')[0];
         window.addEventListener('click', (e) => {
@@ -255,12 +256,30 @@ async function changeRolAccFun(e, rolId, functionalityId, actionId){
         successDiv.style.display = "block";
 
         let success = document.createElement('p');
-        success.innerText = res.code;
+        success.innerText = locale[res.code];
 
         successDiv.appendChild(success);
 
 
         resetTable();
         requestAjaxRolAccFun();
+    })
+    .catch((res) => {
+        console.log(res);
+        
+        resetModalContents();
+        const modal = document.getElementsByClassName('modal')[0];
+        addErrorMessage(res.code, 'request-error');
+        controller = new AbortController();
+        window.addEventListener('click', (e) => {
+            if(e.target == modal){
+                modal.style.display = '';
+                controller.abort();
+            }
+        }, {signal: controller.signal});
+        document.getElementsByClassName('modal')[0].style.display = 'block';
+        document.getElementsByClassName('modal-content')[0].style.display = 'none';
+        
+
     });
 }

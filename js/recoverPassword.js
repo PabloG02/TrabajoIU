@@ -1,4 +1,4 @@
-createHeader('headerChangePassword', undefined, './login.html');
+createHeader('headerRecoverPassword', undefined, './login.html');
 
 const dniField = document.getElementById("dni");
 const passwordField = document.getElementById("password");

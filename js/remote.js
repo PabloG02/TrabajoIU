@@ -6,7 +6,7 @@ function requestAjaxPromise(controlador, action, readFormFields){
     let dataToSend = `controlador=${controlador}&action=${action}`;
     if(document.getElementsByTagName('form')[0] !== undefined && readFormFields){
         dataToSend += `&${$("form").serialize()}`;
-        if(document.querySelector('input[type=file]') != undefined){
+        if(document.querySelector('input[type=file]') != undefined && document.querySelector('input[type=file]').files[0] != undefined){
             // Enables the ability to send the name of the image.
             dataToSend += `&foto_persona=${document.querySelector('input[type=file]').files[0].name}`;
         }
@@ -28,7 +28,7 @@ function requestAjaxPromise(controlador, action, readFormFields){
                 resolve(res);
             }
         }).fail( function( jqXHR ) {  //TODO
-            //mensajeHTTPFAIL(jqXHR.status);
+            httpStatusCodeToMessage(jqXHR.status);
             console.log(jqXHR);
             console.log(jqXHR.status);
         });
@@ -65,6 +65,19 @@ async function requestAjax(controlador, action, readFormFields = true, resetTabl
 		});
 }
 
+function httpStatusCodeToMessage(status){	
+	if (status === 0){
+	    addErrorMessage("ERR_CONNECTION_REFUSED");
+    } else if (status === 403) {
+        addErrorMessage("ERROR_AUTENTICACION");
+	} else if (status === 404) {
+        addErrorMessage("error_notFound");
+    } else if (status === 500) {
+	    addErrorMessage("MENSAJE_ERROR_INTERNO");
+	} 
+}
+
+
 async function sendAuthLoginRequestAjax(){
     const password = document.getElementById('password').value;
     document.getElementById('password').value = hex_md5(password);
@@ -92,7 +105,7 @@ async function sendAuthSignUpRequestAjax(){
             successDiv.style.display = "block";
 
             let success = document.createElement('p');
-            success.innerText = 'Te has registrado con éxito';
+            success.innerText = locale['success_signUp'];
 
             successDiv.appendChild(success);
             setTimeout(() => { window.location.assign('./login.html'); }, 5000);
@@ -105,8 +118,8 @@ async function sendAuthSignUpRequestAjax(){
 }
 
 async function sendAuthChangePasswordRequestAjax(){
-    const password = document.getElementById('password').value;
-    document.getElementById('password').value = hex_md5(password);
+    const password = document.querySelector('input[name=contrasena]').value;
+    document.querySelector('input[name=contrasena]').value = hex_md5(password);
     await requestAjaxPromise('AUTH', 'CAMBIAR_CONTRASENA', true)
         .then((res) => {
             console.log(res);
@@ -115,13 +128,13 @@ async function sendAuthChangePasswordRequestAjax(){
             successDiv.style.display = "block";
 
             let success = document.createElement('p');
-            success.innerText = 'Has cambiado la contraseña con éxito';
+            success.innerText = locale['success_changePassword'];
 
             successDiv.appendChild(success);
             setTimeout(() => { window.location.assign('./login.html'); }, 5000);
 		})
 		.catch((res) => {
-            document.getElementById('password').value = password;
+            document.querySelector('input[name=contrasena]').value = password;
 			console.log(res.code);
             addErrorMessage(res.code, 'request-error');
 		});
@@ -197,7 +210,35 @@ function requestAjaxSEARCHPromiseRolAccFun(controlador, action, id){
                 resolve(res);
             }
         }).fail( function( jqXHR ) {  //TODO
-            //mensajeHTTPFAIL(jqXHR.status);
+            httpStatusCodeToMessage(jqXHR.status);
+            console.log(jqXHR);
+            console.log(jqXHR.status);
+        });
+    });
+}
+
+
+
+function customRequestAjaxPromise(controlador, action, valuesToSend){
+    let dataToSend = `controlador=${controlador}&action=${action}&${valuesToSend}`;
+    console.log(dataToSend);
+    
+    return new Promise(function(resolve, reject) {
+        // Request sent to the backend
+        $.ajax({
+            method: "POST",
+            url: 'http://193.147.87.202/Back/index.php',
+            data: dataToSend, /* Coma needed????? */
+        }).done(res => {    // Backend response
+            console.log(res);
+            if (res.ok != true) {
+                reject(res);
+            }
+            else{
+                resolve(res);
+            }
+        }).fail( function( jqXHR ) {  //TODO
+            httpStatusCodeToMessage(jqXHR.status);
             console.log(jqXHR);
             console.log(jqXHR.status);
         });

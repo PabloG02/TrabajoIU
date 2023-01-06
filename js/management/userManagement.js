@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
 createHeader('headerUserManagement', getCookie('user'), './menu.html');
+createSidebar();
 
 // Populates table on site load.
 requestAjax('usuario', 'SEARCH', false);
@@ -105,9 +106,10 @@ function createForm(fieldsContent, action){
     dniField.type = 'text';
     dniField.id = 'dni';
     dniField.name = 'dni';
+    dniField.placeholder = locale[`${dniField.id}Placeholder`];
     if(fieldsContent != null)
         dniField.value = fieldsContent.dni;
-    dniField.readOnly = flags.readOnly;
+    dniField.readOnly = flags.readOnly || flags.dontEditPK;
 
     usernameLabel.htmlFor = 'username';
     usernameLabel.innerHTML = `${locale['username']}: `;
@@ -117,15 +119,16 @@ function createForm(fieldsContent, action){
     usernameField.type = 'text';
     usernameField.id = 'username';
     usernameField.name = 'usuario';
+    usernameField.placeholder = locale[`${usernameField.id}Placeholder`];
     if(fieldsContent != null)
         usernameField.value = fieldsContent.usuario;
     usernameField.readOnly = flags.readOnly;
 
-    roleLabel.htmlFor = 'id_rol';
+    roleLabel.htmlFor = 'roleId';
     roleLabel.innerHTML = `${locale['role']}: `;
     roleLabel.style.display = 'inline-block';
     roleLabel.style.width = '80px';
-    roleSelect.id = 'id_rol';
+    roleSelect.id = 'roleId';
     roleSelect.name = 'id_rol';
 
     populateSelectionDropdown(roleSelect, 'rol', action, fieldsContent);
@@ -161,11 +164,11 @@ function createForm(fieldsContent, action){
     
     
     dniField.addEventListener("blur", () => checkDNI(action), {signal: controller.signal});
-    usernameField.addEventListener("blur", () => checkName(action), {signal: controller.signal});
+    usernameField.addEventListener("blur", () => checkUsername(action), {signal: controller.signal});
     if(flags.noSubmit === false)
     if(flags.noSubmit === false)
     submitButton.addEventListener("click", (e) => {
-        if(checkFormUser(e, action))
+        if(checkFormUserManagement(e, action))
             form.requestSubmit();
     }, {signal: controller.signal});
 

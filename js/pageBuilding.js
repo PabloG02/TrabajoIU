@@ -17,7 +17,10 @@ function createHeader(h1Id, loginInfo, goBackPageName){
     languagesDiv.innerHTML = '<span id="en_US">EN</span> <span id="es_ES">ES</span> <span id="gl_ES">GL</span>';
 
     userDiv.id = 'userDiv';
-    userDiv.innerHTML = `<img src="./images/person_color_default.svg"><span>${loginInfo}</span><img src="./images/cross_mark_color.svg" id="signOut">`;
+    userDiv.innerHTML = `<img src="./images/person_color_default.svg">
+                        <span>${loginInfo}</span>
+                        <a href="./changePassword.html"><img src="./images/locked_with_key_color.svg" id="changePassword"></a>
+                        <img src="./images/cross_mark_color.svg" id="signOut">`;
 
     headerLeftContainer.appendChild(languagesDiv);
     if(loginInfo !== undefined)
@@ -36,6 +39,57 @@ function createHeader(h1Id, loginInfo, goBackPageName){
         });
     }
 }
+/**
+ * TODO: TRAADUCIR!!!
+ */
+function createSidebar(){
+    let navElement = document.createElement('nav');
+    navElement.className = 'navbar close';
+    let navigationElement = document.createElement('img');
+    navigationElement.className = 'navigation';
+    navigationElement.src = './images/ic_fluent_navigation_24_regular.svg';
+
+    let ulElement = document.createElement('ul');
+    ulElement.className = 'navbar-itemList';
+    ulElement.appendChild(createHyperlinkSidebar('menu.html', 'ic_fluent_home_48_regular.svg', 'Inicio'));
+    ulElement.appendChild(createHyperlinkSidebar('personManagement.html', 'ic_fluent_person_standing_16_regular.svg', 'Gestión de personas'));
+    ulElement.appendChild(createHyperlinkSidebar('userManagement.html', 'ic_fluent_person_32_regular.svg', 'Gestión de usuarios'));
+    ulElement.appendChild(createHyperlinkSidebar('roleManagement.html', 'ic_fluent_person_accounts_24_regular.svg', 'Gestión de roles'));
+    ulElement.appendChild(createHyperlinkSidebar('functionalityManagement.html', 'ic_fluent_people_toolbox_20_regular.svg', 'Gestión de funcionalidades'));
+    ulElement.appendChild(createHyperlinkSidebar('actionManagement.html', 'ic_fluent_person_running_20_regular.svg', 'Gestión de acciones'));
+    ulElement.appendChild(createHyperlinkSidebar('rolAccFunManagement.html', 'ic_fluent_person_key_20_regular.svg', 'Gestión de permisos'));
+
+    navElement.appendChild(navigationElement);
+    navElement.appendChild(ulElement);
+    document.body.append(navElement);
+
+    
+    document.getElementsByClassName('navigation')[0].addEventListener('click', ()=>{
+        document.getElementsByClassName('navbar')[0].classList.toggle('close');
+    });
+}
+
+function createHyperlinkSidebar(href, img, text){
+    let liElement = document.createElement('li');
+    liElement.className = 'navbar-item';
+    let aElement = document.createElement('a');
+    aElement.href = `./${href}`;
+    let imgElement = document.createElement('img');
+    imgElement.src = `./images/${img}`;
+    let spanElement = document.createElement('span');
+    spanElement.innerText = text;
+    console.log(window.location.pathname);
+    if (window.location.pathname === `/${href}`){
+        liElement.classList.add('current');
+        imgElement.src = imgElement.src.replace('regular', 'filled');
+    }
+    
+    liElement.appendChild(aElement);
+    aElement.appendChild(imgElement);
+    aElement.appendChild(spanElement);
+
+    return liElement;
+}
 
 /* -- Used in Management pages -- */
 // Common functions related to the table that shows the database info
@@ -44,8 +98,9 @@ function setParamsPerAction(action){
     let readOnly = action === 'DELETE' || action === 'DETAILS';
     // Flag to not create the submit button.
     let noSubmit = action === 'DETAILS';
+    let dontEditPK = action === 'EDIT';
 
-    return {readOnly, noSubmit};
+    return {readOnly, noSubmit, dontEditPK};
 }
 
 function populateTable(tableData){
@@ -113,7 +168,14 @@ function addErrorMessage(errorCode, errorType) {
     let error = document.createElement('p');
     error.ariaLabel = errorType;
     error.id = errorCode;
-    error.innerHTML = locale[errorCode];
+    try {
+        error.innerText = locale[errorCode];
+    } catch (err) {
+        console.error('Locale files did not arrive in time');
+        console.error(err);
+        error.innerText = errorCode;
+    }
+    
 
     let errorList = errorDiv.childNodes;
     let i = 0;
@@ -134,14 +196,20 @@ function addErrorMessage(errorCode, errorType) {
     if (errorType !== 'request-error') removeErrorMessage('request-error');
 }
 
-function addSuccessMessage(message) {
+function addSuccessMessage(successCode) {
     document.getElementsByClassName('modal-content')[0].style.display = 'none';
     document.getElementById('error-messages').style.display = 'none';
     const successDiv = document.getElementById("success-messages");
     successDiv.style.display = "block";
 
     let success = document.createElement('p');
-    success.innerText = message;
+    try {
+        success.innerText = locale[successCode];
+    } catch (error) {
+        console.error('Locale files did not arrive in time');
+        console.error(error);
+        success.innerText = successCode;
+    }
 
     successDiv.appendChild(success);
 }

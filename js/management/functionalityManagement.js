@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', isUserAuthenticated);
 createHeader('headerFunctionalityManagement', getCookie('user'), './menu.html');
+createSidebar();
 
 // Populates table on site load.
 requestAjax('funcionalidad', 'SEARCH');
@@ -87,7 +88,7 @@ function createForm(fieldsContent, action){
     let form = document.createElement('form');
     form.id = 'managementForm';
     
-    let functionalityId = createInputWithLabel('text', 'functionalityId', 'id_funcionalidad', fieldsContent, flags.readOnly);
+    let functionalityId = createInputWithLabel('text', 'functionalityId', 'id_funcionalidad', fieldsContent, flags.readOnly || flags.dontEditPK);
     let functionalityName = createInputWithLabel('text', 'functionalityName', 'nombre_funcionalidad', fieldsContent, flags.readOnly);
     let functionalityDescription = createInputWithLabel('text', 'functionalityDescription', 'descrip_funcionalidad', fieldsContent, flags.readOnly); /*TEXTAREA ¿?¿?¿?¿?¿??¿?¿¿?¿*/
     let submitButton = document.createElement('img');
@@ -142,6 +143,8 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     field.type = inputType;
     field.id = idTextBox;
     field.name = inputName;
+    if(locale[`${field.id}Placeholder`] !== undefined)
+        field.placeholder = locale[`${field.id}Placeholder`];
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;
