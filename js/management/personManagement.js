@@ -74,9 +74,9 @@ function populateRow(tableElement, rowData){
     cells[2].innerHTML = rowData.apellidos_persona;
     cells[3].innerHTML = rowData.email_persona;
     cells[4].innerHTML = rowData.foto_persona;
-    cells[5].innerHTML = '<img src="images/pencil_color.svg" class="svg edit">';
-    cells[6].innerHTML = '<img src="images/wastebasket_color.svg" class="svg delete">';
-    cells[7].innerHTML = '<img src="images/page_facing_up_color.svg" class="svg details">';
+    cells[5].innerHTML = '<img src="images/pencil_color.svg" class="svg edit" translate="no" data-text-id="editTitle">';
+    cells[6].innerHTML = '<img src="images/wastebasket_color.svg" class="svg delete" translate="no" data-text-id="deleteTitle">';
+    cells[7].innerHTML = '<img src="images/page_facing_up_color.svg" class="svg details" translate="no" data-text-id="detailsTitle">';
 
     cells[5].children[0].addEventListener('click', (e) => {populateModal(e, rowData);});
     cells[6].children[0].addEventListener('click', (e) => {populateModal(e, rowData);});

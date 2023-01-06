@@ -32,31 +32,8 @@ async function populatePage(language){
     let locale = await getLocale(language);
     console.log(locale);
 
-    let title = document.getElementsByTagName('title')[0];
-    console.log(`${title.id}`);
-    title.textContent = locale[`${title.id.replace('title', 'header')}`];
-
-    let header = document.getElementsByTagName('h1')[0];
-    console.log(`${header.id}`);
-    header.textContent = locale[`${header.id}`];
-    
-    let buttons = ['add', 'search', 'edit', 'delete', 'details',];
-    for(let buttonType of buttons){
-        for(let button of document.querySelectorAll(`.${buttonType}`)){
-            button.title = locale[`${buttonType}Title`];
-        }
-    }
-
-    buttons = ['changePassword', 'signOut', 'goBack'];
-    for(let buttonType of buttons){
-        for(let button of document.querySelectorAll(`#${buttonType}`)){
-            button.title = locale[`${buttonType}`];
-        }
-    }
-
+    // TODO: refactor
     let ths = document.getElementsByTagName('th');
-    console.log('Language ths  ' + ths.length);
-    console.log(ths);
     for(let i = 0; i < ths.length; i++){
         // Do not delete roles from table's header in rolaccionfuncionalidad
         if(ths[i].id.includes('Th')){
@@ -65,46 +42,57 @@ async function populatePage(language){
         console.log(ths[i].textContent);
     }
 
-    let labels = document.getElementsByTagName('label');
-    console.log('Language labels  ' + ths.length);
-    console.log(labels);
-    for(let label of labels){
-        console.log(label.htmlFor);
-        label.innerText = locale[`${label.htmlFor}`];
-    }
-
-    let inputs = document.querySelectorAll('input[type=text],input[type=password],input[type=tel],input[type=email]');
-    for(let input of inputs){
-        if(locale[input.id+'Placeholder'] !== undefined)
-            input.placeholder = locale[input.id+'Placeholder'];
-    }
-
-    let hyperlinks = document.querySelectorAll('.hyperlink .hyperlinkText');
-    for(let hyperlink of hyperlinks){
-        hyperlink.innerText = locale[`${hyperlink.id}`];
-    }
-
-    let signUp = document.getElementById('signUp');
-    if (signUp != undefined)
-        signUp.innerText = locale['signUp'];
-
-    let forgotPassword = document.getElementById('forgotPassword');
-    if (forgotPassword != undefined)
-        forgotPassword.innerText = locale['forgotPassword'];
-
-    let logIn = document.getElementById('submitButton');
-    console.log(logIn != undefined && logIn.ariaLabel === 'logIn');
-    if (logIn != undefined && logIn.ariaLabel === 'logIn')
-        logIn.value = locale['logIn'];
-
-    let changePassword = document.getElementById('submitButton');
-    console.log(changePassword != undefined && changePassword.ariaLabel === 'changePassword');
-    if (changePassword != undefined && changePassword.ariaLabel === 'changePassword')
-        changePassword.value = locale['changePassword'];
-
     let errors = document.getElementById('error-messages')?.childNodes;
-    if (errors != undefined)
+    if (errors != undefined){
         for(let error of errors){
             error.innerText = locale[`${error.id}`];
         }
+    } 
+
+    // Refactored :)
+    let title = document.getElementsByTagName('title')[0];
+    title.textContent = locale[`${title.id.replace('title', 'header')}`];
+
+    let header = document.getElementsByTagName('h1')[0];
+    header.textContent = locale[`${header.id}`];
+
+    let divs = document.getElementsByTagName('div');
+    for(let div of divs){
+        if(div.translate == false)
+            div.innerText = locale[`${div.dataset.textId}`];
+    }
+
+    let spans = document.getElementsByTagName('span');
+    for(let span of spans){
+        if(span.translate == false)
+            span.innerText = locale[`${span.dataset.textId}`];
+    }
+
+    let imgs = document.getElementsByTagName('img');
+    for(let img of imgs){
+        if(img.translate == false)
+            img.title = locale[`${img.dataset.textId}`];
+    }
+
+    let as = document.getElementsByTagName('a');
+    for(let a of as){
+        if(a.translate == false)
+            a.innerText = locale[`${a.dataset.textId}`];
+    }
+
+    let labels = document.getElementsByTagName('label');
+    for(let label of labels){
+        label.innerText = locale[`${label.htmlFor}`];
+    }
+
+    // Not completely refactored
+    let inputs = document.getElementsByTagName('input');
+    for(let input of inputs){
+        if(input.type == 'submit' && input.translate == false){
+            input.value = locale[`${input.dataset.textId}`];
+        } else if(['text','password','tel','email'].includes(input.type)){
+            if(locale[input.id+'Placeholder'] !== undefined)
+                input.placeholder = locale[input.id+'Placeholder'];
+        }
+    }
 }

@@ -7,7 +7,7 @@ function createHeader(h1Id, loginInfo, goBackPageName){
     let languagesDiv = document.createElement('div');
     let userDiv = document.createElement('div');
 
-    goBackContainer.innerHTML = `<a href="${goBackPageName}"><img src="./images/left_arrow_color.svg" id="goBack"></a>`;
+    goBackContainer.innerHTML = `<a href="${goBackPageName}"><img src="./images/left_arrow_color.svg" id="goBack" translate="no" data-text-id="goBack"></a>`;
 
     h1Element.id = h1Id;
 
@@ -19,8 +19,8 @@ function createHeader(h1Id, loginInfo, goBackPageName){
     userDiv.id = 'userDiv';
     userDiv.innerHTML = `<img src="./images/person_color_default.svg">
                         <span>${loginInfo}</span>
-                        <a href="./changePassword.html"><img src="./images/locked_with_key_color.svg" id="changePassword"></a>
-                        <img src="./images/cross_mark_color.svg" id="signOut">`;
+                        <a href="./changePassword.html"><img src="./images/locked_with_key_color.svg" id="changePassword" translate="no" data-text-id="changePassword"></a>
+                        <img src="./images/cross_mark_color.svg" id="signOut" translate="no" data-text-id="signOut">`;
 
     headerLeftContainer.appendChild(languagesDiv);
     if(loginInfo !== undefined)
@@ -51,13 +51,13 @@ function createSidebar(){
 
     let ulElement = document.createElement('ul');
     ulElement.className = 'navbar-itemList';
-    ulElement.appendChild(createHyperlinkSidebar('menu.html', 'ic_fluent_home_48_regular.svg', 'Inicio'));
-    ulElement.appendChild(createHyperlinkSidebar('personManagement.html', 'ic_fluent_person_standing_16_regular.svg', 'Gestión de personas'));
-    ulElement.appendChild(createHyperlinkSidebar('userManagement.html', 'ic_fluent_person_32_regular.svg', 'Gestión de usuarios'));
-    ulElement.appendChild(createHyperlinkSidebar('roleManagement.html', 'ic_fluent_person_accounts_24_regular.svg', 'Gestión de roles'));
-    ulElement.appendChild(createHyperlinkSidebar('functionalityManagement.html', 'ic_fluent_people_toolbox_20_regular.svg', 'Gestión de funcionalidades'));
-    ulElement.appendChild(createHyperlinkSidebar('actionManagement.html', 'ic_fluent_person_running_20_regular.svg', 'Gestión de acciones'));
-    ulElement.appendChild(createHyperlinkSidebar('rolAccFunManagement.html', 'ic_fluent_person_key_20_regular.svg', 'Gestión de permisos'));
+    ulElement.appendChild(createHyperlinkSidebar('menu.html', 'ic_fluent_home_48_regular.svg', 'menu'));
+    ulElement.appendChild(createHyperlinkSidebar('personManagement.html', 'ic_fluent_person_standing_16_regular.svg', 'personManagement'));
+    ulElement.appendChild(createHyperlinkSidebar('userManagement.html', 'ic_fluent_person_32_regular.svg', 'userManagement'));
+    ulElement.appendChild(createHyperlinkSidebar('roleManagement.html', 'ic_fluent_person_accounts_24_regular.svg', 'roleManagement'));
+    ulElement.appendChild(createHyperlinkSidebar('functionalityManagement.html', 'ic_fluent_people_toolbox_20_regular.svg', 'functionalityManagement'));
+    ulElement.appendChild(createHyperlinkSidebar('actionManagement.html', 'ic_fluent_person_running_20_regular.svg', 'actionManagement'));
+    ulElement.appendChild(createHyperlinkSidebar('rolAccFunManagement.html', 'ic_fluent_person_key_20_regular.svg', 'rolAccFunManagement'));
 
     navElement.appendChild(navigationElement);
     navElement.appendChild(ulElement);
@@ -70,7 +70,7 @@ function createSidebar(){
     });
 }
 
-function createHyperlinkSidebar(href, img, text){
+function createHyperlinkSidebar(href, img, textID){
     let liElement = document.createElement('li');
     liElement.className = 'navbar-item';
     let aElement = document.createElement('a');
@@ -85,7 +85,8 @@ function createHyperlinkSidebar(href, img, text){
     imgElement.src = imgSrc;
 
     let spanElement = document.createElement('span');
-    spanElement.innerText = text;    
+    spanElement.translate = false;
+    spanElement.dataset.textId = textID;
     
     liElement.appendChild(aElement);
     aElement.appendChild(imgElement);
