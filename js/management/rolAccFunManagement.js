@@ -120,6 +120,7 @@ function createForm(fieldsContent, action){
 
     console.log(fieldsContent);
     let form = document.createElement('form');
+    form.id = 'managementForm';
     
     let roleLabel = document.createElement('label');
     let roleSelect = document.createElement('select');
@@ -167,19 +168,12 @@ function createForm(fieldsContent, action){
 
     form.appendChild(roleLabel);
     form.appendChild(roleSelect);
-    form.appendChild(document.createElement('br'));
     form.appendChild(functionalityLabel);
     form.appendChild(functionalitySelect);
-    form.appendChild(document.createElement('br'));
     form.appendChild(actionLabel);
     form.appendChild(actionSelect);
-    form.appendChild(document.createElement('br'));
     if(flags.noSubmit === false){
-        let submitDiv = document.createElement('div');
-        submitDiv.style.display = 'flex';
-        submitDiv.style.justifyContent = 'right';
-        submitDiv.appendChild(submitButton);
-        form.appendChild(submitDiv);
+        form.appendChild(submitButton);
     }
     
     

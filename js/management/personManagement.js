@@ -112,34 +112,22 @@ function createForm(fieldsContent, action){
 
     form.appendChild(dni.label);
     form.appendChild(dni.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(name.label);
     form.appendChild(name.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(surname.label);
     form.appendChild(surname.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(birthDate.label);
     form.appendChild(birthDate.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(address.label);
     form.appendChild(address.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(phone.label);
     form.appendChild(phone.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(email.label);
     form.appendChild(email.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(photo.label);
     form.appendChild(photo.field);
-    form.appendChild(document.createElement('br'));
     if(flags.noSubmit === false){
-        let submitDiv = document.createElement('div');
-        submitDiv.style.display = 'flex';
-        submitDiv.style.justifyContent = 'right';
-        submitDiv.appendChild(submitButton);
-        form.appendChild(submitDiv);
+        form.appendChild(submitButton);
     }
 
     

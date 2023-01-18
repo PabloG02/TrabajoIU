@@ -104,18 +104,12 @@ function createForm(fieldsContent, action){
 
     form.appendChild(actionId.label);
     form.appendChild(actionId.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(actionName.label);
     form.appendChild(actionName.field);
-    form.appendChild(document.createElement('br'));
     form.appendChild(actionDescription.label);
     form.appendChild(actionDescription.field);
     if(flags.noSubmit === false){
-        let submitDiv = document.createElement('div');
-        submitDiv.style.display = 'flex';
-        submitDiv.style.justifyContent = 'right';
-        submitDiv.appendChild(submitButton);
-        form.appendChild(submitDiv);
+        form.appendChild(submitButton);
     }
 
 

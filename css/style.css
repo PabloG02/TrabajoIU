@@ -407,6 +407,20 @@ span > .add {
 
 #managementForm {
     margin: 0px 15px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#managementForm input , #managementForm select {
+    max-width: fit-content;
+    max-width: -moz-fit-content;
+}
+
+#managementForm #submitImage {
+    grid-column: 2;
+    justify-self: end;
 }
 
 #submitImage {

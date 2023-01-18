@@ -85,44 +85,16 @@ function populateRow(tableElement, rowData){
 function createForm(fieldsContent, action){
     let flags = setParamsPerAction(action);
 
-    console.log(fieldsContent);
     let form = document.createElement('form');
+    form.id = 'managementForm';
     
-    let dniLabel = document.createElement('label');
-    let dniField = document.createElement('input');
-    let usernameLabel = document.createElement('label');
-    let usernameField = document.createElement('input');
+    let dni = createInputWithLabel('text', 'dni', 'dni', fieldsContent, flags.readOnly || flags.dontEditPK);
+    let username = createInputWithLabel('text', 'username', 'usuario', fieldsContent, flags.readOnly);
     let roleLabel = document.createElement('label');
     let roleSelect = document.createElement('select');
     let submitButton = document.createElement('img');
 
     form.method = 'dialog';
-
-    dniLabel.htmlFor = 'dni';
-    dniLabel.textContent = `${locale['dni']}: `;
-    dniLabel.style.display = 'inline-block';
-    dniLabel.style.width = '80px';
-    dniField.className = 'textBox';
-    dniField.type = 'text';
-    dniField.id = 'dni';
-    dniField.name = 'dni';
-    dniField.placeholder = locale[`${dniField.id}Placeholder`];
-    if(fieldsContent != null)
-        dniField.value = fieldsContent.dni;
-    dniField.readOnly = flags.readOnly || flags.dontEditPK;
-
-    usernameLabel.htmlFor = 'username';
-    usernameLabel.innerHTML = `${locale['username']}: `;
-    usernameLabel.style.display = 'inline-block';
-    usernameLabel.style.width = '80px';
-    usernameField.className = 'textBox';
-    usernameField.type = 'text';
-    usernameField.id = 'username';
-    usernameField.name = 'usuario';
-    usernameField.placeholder = locale[`${usernameField.id}Placeholder`];
-    if(fieldsContent != null)
-        usernameField.value = fieldsContent.usuario;
-    usernameField.readOnly = flags.readOnly;
 
     roleLabel.htmlFor = 'roleId';
     roleLabel.innerHTML = `${locale['role']}: `;
@@ -145,27 +117,19 @@ function createForm(fieldsContent, action){
         submitButton.src = 'images\\send_color_unofficial.png';
     }
 
-    form.appendChild(dniLabel);
-    form.appendChild(dniField);
-    form.appendChild(document.createElement('br'));
-    form.appendChild(usernameLabel);
-    form.appendChild(usernameField);
-    form.appendChild(document.createElement('br'));
+    form.appendChild(dni.label);
+    form.appendChild(dni.field);
+    form.appendChild(username.label);
+    form.appendChild(username.field);
     form.appendChild(roleLabel);
     form.appendChild(roleSelect);
-    form.appendChild(document.createElement('br'));
     if(flags.noSubmit === false){
-        let submitDiv = document.createElement('div');
-        submitDiv.style.display = 'flex';
-        submitDiv.style.justifyContent = 'right';
-        submitDiv.appendChild(submitButton);
-        form.appendChild(submitDiv);
+        form.appendChild(submitButton);
     }
     
     
-    dniField.addEventListener("blur", () => checkDNI(action), {signal: controller.signal});
-    usernameField.addEventListener("blur", () => checkUsername(action), {signal: controller.signal});
-    if(flags.noSubmit === false)
+    dni.field.addEventListener("blur", () => checkDNI(action), {signal: controller.signal});
+    username.field.addEventListener("blur", () => checkUsername(action), {signal: controller.signal});
     if(flags.noSubmit === false)
     submitButton.addEventListener("click", (e) => {
         if(checkFormUserManagement(e, action))
@@ -192,4 +156,25 @@ async function populateSelectionDropdown(roleSelect, controlador, action, fields
         }
         roleSelect.appendChild(roleOption);
     }
+}
+
+function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, readOnly){
+    let label = document.createElement('label');
+    let field = document.createElement('input');
+
+    label.htmlFor = idTextBox;
+    label.textContent = `${locale[idTextBox]}: `;
+    label.style.display = 'inline-block';
+    label.style.width = '80px';
+    field.className = 'textBox';
+    field.type = inputType;
+    field.id = idTextBox;
+    field.name = inputName;
+    if(locale[`${field.id}Placeholder`] !== undefined)
+        field.placeholder = locale[`${field.id}Placeholder`];
+    if(fieldsContent != null && fieldsContent[inputName] !== undefined)
+        field.value = fieldsContent[inputName];
+    field.readOnly = readOnly;
+
+    return {label, field};
 }
