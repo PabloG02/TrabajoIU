@@ -104,10 +104,13 @@ function createForm(fieldsContent, action){
 
     form.appendChild(roleId.label);
     form.appendChild(roleId.field);
+    form.appendChild(roleId.errorMessage);
     form.appendChild(roleName.label);
     form.appendChild(roleName.field);
+    form.appendChild(roleName.errorMessage);
     form.appendChild(roleDescription.label);
     form.appendChild(roleDescription.field);
+    form.appendChild(roleDescription.errorMessage);
     if(flags.noSubmit === false){
         form.appendChild(submitButton);
     }
@@ -128,6 +131,7 @@ function createForm(fieldsContent, action){
 function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, readOnly){
     let label = document.createElement('label');
     let field = document.createElement('input');
+    let errorMessage = document.createElement('p');
 
     label.htmlFor = idTextBox;
     label.textContent = `${locale[idTextBox]}: `;
@@ -142,8 +146,9 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;
+    errorMessage.id = `${field.id}Error`;
 
-    return {label, field};
+    return {label, field, errorMessage};
 }
 
 async function populateRolSelectionDropdown(roleSelect, fieldsContent){

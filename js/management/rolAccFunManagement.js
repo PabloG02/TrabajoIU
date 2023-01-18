@@ -124,11 +124,17 @@ function createForm(fieldsContent, action){
     
     let roleLabel = document.createElement('label');
     let roleSelect = document.createElement('select');
+    let roleErrorMessage = document.createElement('p');
+    roleErrorMessage.id = `roleIdError`;
     let functionalityLabel = document.createElement('label');
     let functionalitySelect = document.createElement('select');
+    let functionalityErrorMessage = document.createElement('p');
+    functionalityErrorMessage.id = `functionalityIdError`;
     let actionLabel = document.createElement('label');
     let actionSelect = document.createElement('select');
     let submitButton = document.createElement('img');
+    let actionErrorMessage = document.createElement('p');
+    actionErrorMessage.id = `roleIdError`;
 
     form.method = 'dialog';
 
@@ -168,10 +174,13 @@ function createForm(fieldsContent, action){
 
     form.appendChild(roleLabel);
     form.appendChild(roleSelect);
+    form.appendChild(roleErrorMessage);
     form.appendChild(functionalityLabel);
     form.appendChild(functionalitySelect);
+    form.appendChild(functionalityErrorMessage);
     form.appendChild(actionLabel);
     form.appendChild(actionSelect);
+    form.appendChild(actionErrorMessage);
     if(flags.noSubmit === false){
         form.appendChild(submitButton);
     }

@@ -104,10 +104,13 @@ function createForm(fieldsContent, action){
 
     form.appendChild(actionId.label);
     form.appendChild(actionId.field);
+    form.appendChild(actionId.errorMessage);
     form.appendChild(actionName.label);
     form.appendChild(actionName.field);
+    form.appendChild(actionName.errorMessage);
     form.appendChild(actionDescription.label);
     form.appendChild(actionDescription.field);
+    form.appendChild(actionDescription.errorMessage);
     if(flags.noSubmit === false){
         form.appendChild(submitButton);
     }
@@ -128,6 +131,7 @@ function createForm(fieldsContent, action){
 function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, readOnly){
     let label = document.createElement('label');
     let field = document.createElement('input');
+    let errorMessage = document.createElement('p');
 
     label.htmlFor = idTextBox;
     label.textContent = `${locale[idTextBox]}: `;
@@ -142,6 +146,7 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;
+    errorMessage.id = `${field.id}Error`;
 
-    return {label, field};
+    return {label, field, errorMessage};
 }

@@ -112,20 +112,28 @@ function createForm(fieldsContent, action){
 
     form.appendChild(dni.label);
     form.appendChild(dni.field);
+    form.appendChild(dni.errorMessage);
     form.appendChild(name.label);
     form.appendChild(name.field);
+    form.appendChild(name.errorMessage);
     form.appendChild(surname.label);
     form.appendChild(surname.field);
+    form.appendChild(surname.errorMessage);
     form.appendChild(birthDate.label);
     form.appendChild(birthDate.field);
+    form.appendChild(birthDate.errorMessage);
     form.appendChild(address.label);
     form.appendChild(address.field);
+    form.appendChild(address.errorMessage);
     form.appendChild(phone.label);
     form.appendChild(phone.field);
+    form.appendChild(phone.errorMessage);
     form.appendChild(email.label);
     form.appendChild(email.field);
+    form.appendChild(email.errorMessage);
     form.appendChild(photo.label);
     form.appendChild(photo.field);
+    form.appendChild(photo.errorMessage);
     if(flags.noSubmit === false){
         form.appendChild(submitButton);
     }
@@ -151,6 +159,7 @@ function createForm(fieldsContent, action){
 function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, readOnly){
     let label = document.createElement('label');
     let field = document.createElement('input');
+    let errorMessage = document.createElement('p');
 
     label.htmlFor = idTextBox;
     label.textContent = `${locale[idTextBox]}: `;
@@ -165,8 +174,9 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     if(fieldsContent != null && fieldsContent[inputName] !== undefined)
         field.value = fieldsContent[inputName];
     field.readOnly = readOnly;
+    errorMessage.id = `${field.id}Error`;
 
-    return {label, field};
+    return {label, field, errorMessage};
 }
 
 async function populateRolSelectionDropdown(roleSelect, fieldsContent){
