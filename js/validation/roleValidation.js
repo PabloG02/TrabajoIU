@@ -14,13 +14,13 @@ function checkRoleId(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(roleIdField)){
-        addErrorMessage('error_roleId_empty', 'roleId');
+        addErrorMessageNearField('error_roleId_empty', 'roleId');
         errorDetected = true;
     } else if (checkMaxLenght(roleIdField, maxLength)) {
-        addErrorMessage('error_roleId_too_long', "roleId");
+        addErrorMessageNearField('error_roleId_too_long', "roleId");
         errorDetected = true;
     } else if (checkRegex(roleIdField, "[^0-9]")) {
-        addErrorMessage('error_roleId_invalid_characters', "roleId");
+        addErrorMessageNearField('error_roleId_invalid_characters', "roleId");
         errorDetected = true;
     }
 
@@ -30,7 +30,7 @@ function checkRoleId(action) {
     } else {
         roleIdField.classList.remove('error');
         roleIdField.classList.add('correct');
-        removeErrorMessage('roleId');
+        removeErrorMessageNearField('roleId');
     }
 
     return !errorDetected;
@@ -42,16 +42,16 @@ function checkRoleName(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(roleNameField)){
-        addErrorMessage('error_roleName_empty', "roleName");
+        addErrorMessageNearField('error_roleName_empty', "roleName");
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(roleNameField, minLength)){
-        addErrorMessage('error_roleName_too_short', "roleName");
+        addErrorMessageNearField('error_roleName_too_short', "roleName");
         errorDetected = true;
     } else if (checkMaxLenght(roleNameField, maxLength)) {
-        addErrorMessage('error_roleName_too_long', "roleName");
+        addErrorMessageNearField('error_roleName_too_long', "roleName");
         errorDetected = true;
     } else if (checkRegex(roleNameField, "[^a-zA-Z]")) {
-        addErrorMessage('error_roleName_invalid_characters', "roleName");
+        addErrorMessageNearField('error_roleName_invalid_characters', "roleName");
         errorDetected = true;
     }
 
@@ -61,7 +61,7 @@ function checkRoleName(action) {
     } else {
         roleNameField.classList.remove('error');
         roleNameField.classList.add('correct');
-        removeErrorMessage('roleName');
+        removeErrorMessageNearField('roleName');
     }
 
     return !errorDetected;
@@ -73,16 +73,16 @@ function checkRoleDescription(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(roleDescriptionField)){
-        addErrorMessage('error_roleDescription_empty', "roleDescription");
+        addErrorMessageNearField('error_roleDescription_empty', "roleDescription");
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(roleDescriptionField, minLength)){
-        addErrorMessage('error_roleDescription_too_short', "roleDescription");
+        addErrorMessageNearField('error_roleDescription_too_short', "roleDescription");
         errorDetected = true;
     } else if (checkMaxLenght(roleDescriptionField, maxLength)) {
-        addErrorMessage('error_roleDescription_too_long', "roleDescription");
+        addErrorMessageNearField('error_roleDescription_too_long', "roleDescription");
         errorDetected = true;
     } else if (checkRegex(roleDescriptionField, "[=<>$#{}[\\]]")) {
-        addErrorMessage('error_roleDescription_invalid_characters', "roleDescription");
+        addErrorMessageNearField('error_roleDescription_invalid_characters', "roleDescription");
         errorDetected = true;
     }
 
@@ -92,7 +92,7 @@ function checkRoleDescription(action) {
     } else {
         roleDescriptionField.classList.remove('error');
         roleDescriptionField.classList.add('correct');
-        removeErrorMessage('roleDescription');
+        removeErrorMessageNearField('roleDescription');
     }
 
     return !errorDetected;

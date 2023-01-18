@@ -22,46 +22,46 @@ function checkDNI(action) {
         case 'SEARCH':
             console.log('hola search');
             if (checkMaxLenght(dniField, maxLength)) {
-                addErrorMessage('error_dni_too_long', "dni");
+                addErrorMessageNearField('error_dni_too_long', "dni");
                 errorDetected = true;
             } else if (checkRegex(dniField, "[^0-9a-zA-Z]")){
-                addErrorMessage('error_dni_invalid_characters', "dni");
+                addErrorMessageNearField('error_dni_invalid_characters', "dni");
                 errorDetected = true;
             } else if (checkRegex(dniField, "[0-9]{9}")) {
-                addErrorMessage('error_dni_invalid_structure', "dni");
+                addErrorMessageNearField('error_dni_invalid_structure', "dni");
                 errorDetected = true;
             } else if (checkRegex(dniField, "[a-zA-Z].*[a-zA-Z]")) {
                 // 2 or more letters
-                addErrorMessage('error_dni_invalid_structure', "dni");
+                addErrorMessageNearField('error_dni_invalid_structure', "dni");
                 errorDetected = true;
             } else if (checkRegex(dniField, "[a-zA-Z][0-9]")) {
                 // letter not in last position
-                addErrorMessage('error_dni_invalid_structure', "dni");
+                addErrorMessageNearField('error_dni_invalid_structure', "dni");
                 errorDetected = true;
             }else if (dniField.value.length === 9 && !checkDNILetter(dniField)) {
-                addErrorMessage('error_dni_letter_does_not_match', "dni");
+                addErrorMessageNearField('error_dni_letter_does_not_match', "dni");
                 errorDetected = true;
             }
             break;
         default:
             console.log('hola resto');
             if(isEmpty(dniField)){
-                addErrorMessage('error_dni_empty', "dni");
+                addErrorMessageNearField('error_dni_empty', "dni");
                 errorDetected = true;
             } else if (checkMinLenght(dniField, minLength)) {
-                addErrorMessage('error_dni_too_short', "dni");
+                addErrorMessageNearField('error_dni_too_short', "dni");
                 errorDetected = true;
             } else if (checkMaxLenght(dniField, maxLength)) {
-                addErrorMessage('error_dni_too_long', "dni");
+                addErrorMessageNearField('error_dni_too_long', "dni");
                 errorDetected = true;
             } else if (checkRegex(dniField, "[^0-9a-zA-Z]")){
-                addErrorMessage('error_dni_invalid_characters', "dni");
+                addErrorMessageNearField('error_dni_invalid_characters', "dni");
                 errorDetected = true;
             } else if (!checkRegex(dniField, "[0-9]{8}[a-zA-Z]")) {
-                addErrorMessage('error_dni_invalid_structure', "dni");
+                addErrorMessageNearField('error_dni_invalid_structure', "dni");
                 errorDetected = true;
             } else if (!checkDNILetter(dniField)) {
-                addErrorMessage('error_dni_letter_does_not_match', "dni");
+                addErrorMessageNearField('error_dni_letter_does_not_match', "dni");
                 errorDetected = true;
             }
             break;
@@ -73,7 +73,7 @@ function checkDNI(action) {
     } else {
         dniField.classList.remove('error');
         dniField.classList.add('correct');
-        removeErrorMessage('dni');
+        removeErrorMessageNearField('dni');
     }
 
     return !errorDetected;
@@ -85,16 +85,16 @@ function checkName(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(nameField)){
-        addErrorMessage('error_name_empty', 'name');
+        addErrorMessageNearField('error_name_empty', 'name');
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(nameField, minLength)){
-        addErrorMessage('error_name_too_short', "name");
+        addErrorMessageNearField('error_name_too_short', "name");
         errorDetected = true;
     } else if (checkMaxLenght(nameField, maxLength)) {
-        addErrorMessage('error_name_too_long', "name");
+        addErrorMessageNearField('error_name_too_long', "name");
         errorDetected = true;
     } else if (checkRegex(nameField, "[^a-zA-Záéíóú\\- ]")) {
-        addErrorMessage('error_name_invalid_characters', "name");
+        addErrorMessageNearField('error_name_invalid_characters', "name");
         errorDetected = true;
     }
 
@@ -104,7 +104,7 @@ function checkName(action) {
     } else {
         nameField.classList.remove('error');
         nameField.classList.add('correct');
-        removeErrorMessage('name');
+        removeErrorMessageNearField('name');
     }
 
     return !errorDetected;
@@ -116,16 +116,16 @@ function checkSurname(action) {
     let errorDetected = false;
     
     if(action != 'SEARCH' && isEmpty(surnameField)){
-        addErrorMessage('error_surname_empty', 'surname');
+        addErrorMessageNearField('error_surname_empty', 'surname');
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(surnameField, minLength)){
-        addErrorMessage('error_surname_too_short', "surname");
+        addErrorMessageNearField('error_surname_too_short', "surname");
         errorDetected = true;
     } else if (checkMaxLenght(surnameField, maxLength)) {
-        addErrorMessage('error_surname_too_long', "surname");
+        addErrorMessageNearField('error_surname_too_long', "surname");
         errorDetected = true;
     } else if (checkRegex(surnameField, '[^a-zA-Záéíóú\\- ]')){
-        addErrorMessage('error_surname_invalid_characters', "surname");
+        addErrorMessageNearField('error_surname_invalid_characters', "surname");
         errorDetected = true;
     }
 
@@ -135,7 +135,7 @@ function checkSurname(action) {
     } else {
         surnameField.classList.remove('error');
         surnameField.classList.add('correct');
-        removeErrorMessage('surname');
+        removeErrorMessageNearField('surname');
     }
 
     return !errorDetected;
@@ -146,10 +146,10 @@ function checkBirthDate(action){
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(birthDateField)){
-        addErrorMessage('error_birthDate_empty', 'birthDate');
+        addErrorMessageNearField('error_birthDate_empty', 'birthDate');
         errorDetected = true;
     } else if (new Date(document.getElementById('birthDate').value) > new Date()){
-        addErrorMessage('error_birthDate_future', 'birthDate');
+        addErrorMessageNearField('error_birthDate_future', 'birthDate');
         errorDetected = true;
     }
 
@@ -159,7 +159,7 @@ function checkBirthDate(action){
     } else {
         birthDateField.classList.remove('error');
         birthDateField.classList.add('correct');
-        removeErrorMessage('birthDate');
+        removeErrorMessageNearField('birthDate');
     }
 
     return !errorDetected;
@@ -171,16 +171,16 @@ function checkAddress(action){
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(addressField)){
-        addErrorMessage('error_address_empty', 'address');
+        addErrorMessageNearField('error_address_empty', 'address');
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(addressField, minLength)){
-        addErrorMessage('error_address_too_short', "address");
+        addErrorMessageNearField('error_address_too_short', "address");
         errorDetected = true;
     } else if (checkMaxLenght(addressField, maxLength)) {
-        addErrorMessage('error_address_too_long', "address");
+        addErrorMessageNearField('error_address_too_long', "address");
         errorDetected = true;
     } else if (checkRegex(addressField, '[^a-zA-Záéíóú0-9 /\\-ºª,]')){
-        addErrorMessage('error_address_invalid_characters', "address");
+        addErrorMessageNearField('error_address_invalid_characters', "address");
         errorDetected = true;
     }
 
@@ -190,7 +190,7 @@ function checkAddress(action){
     } else {
         addressField.classList.remove('error');
         addressField.classList.add('correct');
-        removeErrorMessage('address');
+        removeErrorMessageNearField('address');
     }
 
     return !errorDetected;
@@ -205,19 +205,19 @@ function checkEmail(action) {
     let mailFormat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
     if(action != 'SEARCH' && isEmpty(emailField)){
-        addErrorMessage('error_email_empty', 'email');
+        addErrorMessageNearField('error_email_empty', 'email');
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(emailField, minLength)){
-        addErrorMessage('error_email_too_short', "email");
+        addErrorMessageNearField('error_email_too_short', "email");
         errorDetected = true;
     } else if (checkMaxLenght(emailField, maxLength)) {
-        addErrorMessage('error_email_too_long', "email");
+        addErrorMessageNearField('error_email_too_long', "email");
         errorDetected = true;
     } else if (action != 'SEARCH' && !checkRegex(emailField, mailFormat)) {
-        addErrorMessage('error_email_invalid_characters', "email");
+        addErrorMessageNearField('error_email_invalid_characters', "email");
         errorDetected = true;
     } else if (action == 'SEARCH' && checkRegex(emailField, /[^a-z0-9@#$%&'*+/=?^_`{|}\.-]/)) {
-        addErrorMessage('error_email_invalid_characters', "email");
+        addErrorMessageNearField('error_email_invalid_characters', "email");
         errorDetected = true;
     }
     
@@ -227,7 +227,7 @@ function checkEmail(action) {
     } else {
         emailField.classList.remove('error');
         emailField.classList.add('correct');
-        removeErrorMessage('email');
+        removeErrorMessageNearField('email');
     }
 
     return !errorDetected;
@@ -239,13 +239,13 @@ function checkPhone(action) {
     let errorDetected = false;
 
     if (action != 'SEARCH' && checkMinLenght(phoneField, minLength)) {
-        addErrorMessage('error_phone_too_short', "phone");
+        addErrorMessageNearField('error_phone_too_short', "phone");
         errorDetected = true;
     } else if (checkMaxLenght(phoneField, maxLength)) {
-        addErrorMessage('error_phone_too_long', "phone");
+        addErrorMessageNearField('error_phone_too_long', "phone");
         errorDetected = true;
     } else if (checkRegex(phoneField, "[^0-9]")) {
-        addErrorMessage('error_phone_invalid_characters', "phone");
+        addErrorMessageNearField('error_phone_invalid_characters', "phone");
         errorDetected = true;
     }
     
@@ -255,7 +255,7 @@ function checkPhone(action) {
     } else {
         phoneField.classList.remove('error');
         phoneField.classList.add('correct');
-        removeErrorMessage('phone');
+        removeErrorMessageNearField('phone');
     }
 
     return !errorDetected;
@@ -272,16 +272,16 @@ function checkPhoto(action) {
             case 'file':
                 let photo = photoField.files[0];
                 if (photo.name.length < minLength) {
-                    addErrorMessage('error_photo_too_short', "photo");
+                    addErrorMessageNearField('error_photo_too_short', "photo");
                     errorDetected = true;
                 } else if (photo.name.length > maxLength) {
-                    addErrorMessage('error_photo_too_long', "photo");
+                    addErrorMessageNearField('error_photo_too_long', "photo");
                     errorDetected = true;
                 } else if (/[^\.a-zA-Z]/.test(photo.name)) {
-                    addErrorMessage('error_photo_invalid_characters', "photo");
+                    addErrorMessageNearField('error_photo_invalid_characters', "photo");
                     errorDetected = true;
                 } else if (!(/\.png$/.test(photo.name)) && !(/\.jpg$/.test(photo.name))) {
-                    addErrorMessage('error_photo_invalid_extension', "photo");
+                    addErrorMessageNearField('error_photo_invalid_extension', "photo");
                     errorDetected = true;
                 } else {
                     showPreview("photo-container", photo);
@@ -289,16 +289,16 @@ function checkPhoto(action) {
                 break;
             case 'text':
                 if (action != 'SEARCH' && checkMinLenght(photoField, minLength)) {
-                    addErrorMessage('error_photo_too_short', "photo");
+                    addErrorMessageNearField('error_photo_too_short', "photo");
                     errorDetected = true;
                 } else if (checkMaxLenght(photoField, maxLength)) {
-                    addErrorMessage('error_photo_too_long', "photo");
+                    addErrorMessageNearField('error_photo_too_long', "photo");
                     errorDetected = true;
                 } else if (checkRegex(photoField, "[^\\.a-zA-Z]")){
-                    addErrorMessage('error_photo_invalid_characters', "photo");
+                    addErrorMessageNearField('error_photo_invalid_characters', "photo");
                     errorDetected = true;
                 } else if (action != 'SEARCH' && !checkRegex(photoField, "\\.png$") && !checkRegex(photoField, "\\.jpg$")){
-                    addErrorMessage('error_photo_invalid_extension', "photo");
+                    addErrorMessageNearField('error_photo_invalid_extension', "photo");
                     errorDetected = true;
                 }
                 break;
@@ -312,7 +312,7 @@ function checkPhoto(action) {
     } else {
         photoField.classList.remove('error');
         photoField.classList.add('correct');
-        removeErrorMessage('photo');
+        removeErrorMessageNearField('photo');
     }
 
     return !errorDetected;

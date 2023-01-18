@@ -30,6 +30,10 @@ function getFieldValue(element) {
 }
 
 
+function removeErrorMessageNearField(errorType) {  
+    const errorP = document.getElementById(`${errorType}Error`);
+    errorP.innerHTML = "";
+}
 
 function removeErrorMessage(errorType) {  
     const errorDiv = document.getElementById("error-messages");

@@ -419,6 +419,17 @@ span > .add {
     margin-top: 0px;
 }
 
+#managementForm p {
+    color: var(--text-color-error);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: small;
+    line-height: 16px;
+    margin: 0px;
+}
+
 #managementForm #submitImage {
     grid-column: 3;
     justify-self: end;

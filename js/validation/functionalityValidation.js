@@ -14,13 +14,13 @@ function checkFunctionalityId(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(functionalityIdField)){
-        addErrorMessage('error_functionalityId_empty', 'functionalityId');
+        addErrorMessageNearField('error_functionalityId_empty', 'functionalityId');
         errorDetected = true;
     } else if (checkMaxLenght(functionalityIdField, maxLength)) {
-        addErrorMessage('error_functionalityId_too_long', "functionalityId");
+        addErrorMessageNearField('error_functionalityId_too_long', "functionalityId");
         errorDetected = true;
     } else if (checkRegex(functionalityIdField, "[^0-9]")) {
-        addErrorMessage('error_functionalityId_invalid_characters', "functionalityId");
+        addErrorMessageNearField('error_functionalityId_invalid_characters', "functionalityId");
         errorDetected = true;
     }
 
@@ -30,7 +30,7 @@ function checkFunctionalityId(action) {
     } else {
         functionalityIdField.classList.remove('error');
         functionalityIdField.classList.add('correct');
-        removeErrorMessage('functionalityId');
+        removeErrorMessageNearField('functionalityId');
     }
 
     return !errorDetected;
@@ -42,16 +42,16 @@ function checkFunctionalityName(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(functionalityNameField)){
-        addErrorMessage('error_functionalityName_empty', "functionalityName");
+        addErrorMessageNearField('error_functionalityName_empty', "functionalityName");
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(functionalityNameField, minLength)){
-        addErrorMessage('error_functionalityName_too_short', "functionalityName");
+        addErrorMessageNearField('error_functionalityName_too_short', "functionalityName");
         errorDetected = true;
     } else if (checkMaxLenght(functionalityNameField, maxLength)) {
-        addErrorMessage('error_functionalityName_too_long', "functionalityName");
+        addErrorMessageNearField('error_functionalityName_too_long', "functionalityName");
         errorDetected = true;
     } else if (checkRegex(functionalityNameField, "[^a-zA-Z]")) {
-        addErrorMessage('error_functionalityName_invalid_characters', "functionalityName");
+        addErrorMessageNearField('error_functionalityName_invalid_characters', "functionalityName");
         errorDetected = true;
     }
 
@@ -61,7 +61,7 @@ function checkFunctionalityName(action) {
     } else {
         functionalityNameField.classList.remove('error');
         functionalityNameField.classList.add('correct');
-        removeErrorMessage('functionalityName');
+        removeErrorMessageNearField('functionalityName');
     }
 
     return !errorDetected;
@@ -73,16 +73,16 @@ function checkFunctionalityDescription(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(functionalityDescriptionField)){
-        addErrorMessage('error_functionalityDescription_empty', "functionalityDescription");
+        addErrorMessageNearField('error_functionalityDescription_empty', "functionalityDescription");
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(functionalityDescriptionField, minLength)){
-        addErrorMessage('error_functionalityDescription_too_short', "functionalityDescription");
+        addErrorMessageNearField('error_functionalityDescription_too_short', "functionalityDescription");
         errorDetected = true;
     } else if (checkMaxLenght(functionalityDescriptionField, maxLength)) {
-        addErrorMessage('error_functionalityDescription_too_long', "functionalityDescription");
+        addErrorMessageNearField('error_functionalityDescription_too_long', "functionalityDescription");
         errorDetected = true;
     } else if (checkRegex(functionalityDescriptionField, "[=<>$#{}[\\]]")) {
-        addErrorMessage('error_functionalityDescription_invalid_characters', "functionalityDescription");
+        addErrorMessageNearField('error_functionalityDescription_invalid_characters', "functionalityDescription");
         errorDetected = true;
     }
 
@@ -92,7 +92,7 @@ function checkFunctionalityDescription(action) {
     } else {
         functionalityDescriptionField.classList.remove('error');
         functionalityDescriptionField.classList.add('correct');
-        removeErrorMessage('functionalityDescription');
+        removeErrorMessageNearField('functionalityDescription');
     }
 
     return !errorDetected;

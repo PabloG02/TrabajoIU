@@ -161,7 +161,17 @@ function resetModalContents(){
     document.getElementById('error-messages').style.display = '';
 }
 
-
+function addErrorMessageNearField(errorCode, errorType) {
+    const errorP = document.getElementById(`${errorType}Error`);
+    
+    try {
+        errorP.innerText = locale[errorCode];
+    } catch (err) {
+        console.error('Locale files did not arrive in time');
+        console.error(err);
+        errorP.innerText = errorCode;
+    }
+}
 
 function addErrorMessage(errorCode, errorType) {
     const errorDiv = document.getElementById("error-messages");

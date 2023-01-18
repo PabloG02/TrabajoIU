@@ -14,13 +14,13 @@ function checkActionId(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(actionIdField)){
-        addErrorMessage('error_actionId_empty', 'actionId');
+        addErrorMessageNearField('error_actionId_empty', 'actionId');
         errorDetected = true;
     } else if (checkMaxLenght(actionIdField, maxLength)) {
-        addErrorMessage('error_actionId_too_long', "actionId");
+        addErrorMessageNearField('error_actionId_too_long', "actionId");
         errorDetected = true;
     } else if (checkRegex(actionIdField, "[^0-9]")) {
-        addErrorMessage('error_actionId_invalid_characters', "actionId");
+        addErrorMessageNearField('error_actionId_invalid_characters', "actionId");
         errorDetected = true;
     }
 
@@ -30,7 +30,7 @@ function checkActionId(action) {
     } else {
         actionIdField.classList.remove('error');
         actionIdField.classList.add('correct');
-        removeErrorMessage('actionId');
+        removeErrorMessageNearField('actionId');
     }
 
     return !errorDetected;
@@ -42,16 +42,16 @@ function checkActionName(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(actionNameField)){
-        addErrorMessage('error_actionName_empty', "actionName");
+        addErrorMessageNearField('error_actionName_empty', "actionName");
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(actionNameField, minLength)){
-        addErrorMessage('error_actionName_too_short', "actionName");
+        addErrorMessageNearField('error_actionName_too_short', "actionName");
         errorDetected = true;
     } else if (checkMaxLenght(actionNameField, maxLength)) {
-        addErrorMessage('error_actionName_too_long', "actionName");
+        addErrorMessageNearField('error_actionName_too_long', "actionName");
         errorDetected = true;
     } else if (checkRegex(actionNameField, "[^a-zA-Z]")) {
-        addErrorMessage('error_actionName_invalid_characters', "actionName");
+        addErrorMessageNearField('error_actionName_invalid_characters', "actionName");
         errorDetected = true;
     }
 
@@ -61,7 +61,7 @@ function checkActionName(action) {
     } else {
         actionNameField.classList.remove('error');
         actionNameField.classList.add('correct');
-        removeErrorMessage('actionName');
+        removeErrorMessageNearField('actionName');
     }
 
     return !errorDetected;
@@ -73,16 +73,16 @@ function checkActionDescription(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(actionDescriptionField)){
-        addErrorMessage('error_actionDescription_empty', "actionDescription");
+        addErrorMessageNearField('error_actionDescription_empty', "actionDescription");
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(actionDescriptionField, minLength)){
-        addErrorMessage('error_actionDescription_too_short', "actionDescription");
+        addErrorMessageNearField('error_actionDescription_too_short', "actionDescription");
         errorDetected = true;
     } else if (checkMaxLenght(actionDescriptionField, maxLength)) {
-        addErrorMessage('error_actionDescription_too_long', "actionDescription");
+        addErrorMessageNearField('error_actionDescription_too_long', "actionDescription");
         errorDetected = true;
     } else if (checkRegex(actionDescriptionField, "[=<>$#{}[\\]]")) {
-        addErrorMessage('error_actionDescription_invalid_characters', "actionDescription");
+        addErrorMessageNearField('error_actionDescription_invalid_characters', "actionDescription");
         errorDetected = true;
     }
 
@@ -92,7 +92,7 @@ function checkActionDescription(action) {
     } else {
         actionDescriptionField.classList.remove('error');
         actionDescriptionField.classList.add('correct');
-        removeErrorMessage('actionDescription');
+        removeErrorMessageNearField('actionDescription');
     }
 
     return !errorDetected;
