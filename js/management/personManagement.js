@@ -164,7 +164,6 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     label.htmlFor = idTextBox;
     label.textContent = `${locale[idTextBox]}: `;
     label.style.display = 'inline-block';
-    label.style.width = '175px';
     field.className = 'textBox';
     field.type = inputType;
     field.id = idTextBox;

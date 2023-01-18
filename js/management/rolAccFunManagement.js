@@ -141,7 +141,6 @@ function createForm(fieldsContent, action){
     roleLabel.htmlFor = 'roleId';
     roleLabel.innerHTML = `${locale['role']}: `;
     roleLabel.style.display = 'inline-block';
-    roleLabel.style.width = '115px';
     roleSelect.id = 'roleId';
     roleSelect.name = 'id_rol';
 
@@ -150,7 +149,6 @@ function createForm(fieldsContent, action){
     functionalityLabel.htmlFor = 'functionalityId';
     functionalityLabel.innerHTML = `${locale['functionality']}: `;
     functionalityLabel.style.display = 'inline-block';
-    functionalityLabel.style.width = '115px';
     functionalitySelect.id = 'functionalityId';
     functionalitySelect.name = 'id_funcionalidad';
 
@@ -159,7 +157,6 @@ function createForm(fieldsContent, action){
     actionLabel.htmlFor = 'actionId';
     actionLabel.innerHTML = `${locale['action']}: `;
     actionLabel.style.display = 'inline-block';
-    actionLabel.style.width = '115px';
     actionSelect.id = 'actionId';
     actionSelect.name = 'id_accion';
 

@@ -39,9 +39,7 @@ function createHeader(h1Id, loginInfo, goBackPageName){
         });
     }
 }
-/**
- * TODO: TRAADUCIR!!!
- */
+
 function createSidebar(){
     let navElement = document.createElement('nav');
     navElement.className = 'navbar close';

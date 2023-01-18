@@ -99,7 +99,6 @@ function createForm(fieldsContent, action){
     roleLabel.htmlFor = 'roleId';
     roleLabel.innerHTML = `${locale['role']}: `;
     roleLabel.style.display = 'inline-block';
-    roleLabel.style.width = '80px';
     roleSelect.id = 'roleId';
     roleSelect.name = 'id_rol';
 
@@ -171,7 +170,6 @@ function createInputWithLabel(inputType, idTextBox, inputName, fieldsContent, re
     label.htmlFor = idTextBox;
     label.textContent = `${locale[idTextBox]}: `;
     label.style.display = 'inline-block';
-    label.style.width = '80px';
     field.className = 'textBox';
     field.type = inputType;
     field.id = idTextBox;
