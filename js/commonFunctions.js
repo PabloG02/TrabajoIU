@@ -32,6 +32,7 @@ function getFieldValue(element) {
 
 function removeErrorMessageNearField(errorType) {  
     const errorP = document.getElementById(`${errorType}Error`);
+    errorP.dataset.textId = "";
     errorP.innerHTML = "";
 }
 

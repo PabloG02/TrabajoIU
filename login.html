@@ -17,64 +17,18 @@
     <title id="titleLogin">Login</title>
 </head>
 <body>
-    <!-- <nav class="navbar">
-        <img class="navigation" src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Navigation/SVG/ic_fluent_navigation_24_regular.svg" alt="">
-        <ul class="navbar-itemList">
-            <li class="navbar-item">
-                <a href="./menu.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Home/SVG/ic_fluent_home_48_regular.svg">
-                    <span>Inicio</span>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a href="./personManagement.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person%20Standing/SVG/ic_fluent_person_standing_16_regular.svg">
-                    <span>Gestión de personas</span>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a href="./userManagement.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person/SVG/ic_fluent_person_32_regular.svg">
-                    <span>Gestión de usuarios</span>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a href="./roleManagement.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person%20Accounts/SVG/ic_fluent_person_accounts_24_regular.svg">
-                    <span>Gestión de roles</span>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a href="./functionalityManagement.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/People%20Toolbox/SVG/ic_fluent_people_toolbox_20_regular.svg">
-                    <span>Gestión de funcionalidades</span>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a href="./actionManagement.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person%20Running/SVG/ic_fluent_person_running_20_regular.svg">
-                    <span>Gestión de acciones</span>
-                </a>
-            </li>
-            <li class="navbar-item">
-                <a href="./rolAccFunManagement.html">
-                    <img src="https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person%20Key/SVG/ic_fluent_person_key_20_regular.svg">
-                    <span>Gestión de permisos</span>
-                </a>
-            </li>
-        </ul>
-
-    </nav> -->
     <div class="flexbox">
         <div class="container flexbox">
             <form id='loginForm' method='dialog'>
                 <div>
                     <label for="username"></label><br>
                     <input type='text' class="textBox textBox-sizing" id='username' name='usuario'>
+                    <p id="usernameError"></p>
                 </div>
                 <div>
                     <label for="password"></label><br>
                     <input type='password' class="textBox textBox-sizing" id='password' name='contrasena'>
+                    <p id="passwordError"></p>
                 </div>
                 <a href='./recoverPassword.html' id="forgotPassword" translate="no" data-text-id="forgotPassword">¿Has olvidado tu contraseña?</a>
                 <div id="signUpSingInDiv">

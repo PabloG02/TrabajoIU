@@ -273,10 +273,18 @@ header h1 {
     display: grid;
     gap: 20px;
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px 20px 60px;
+    grid-template-rows: max-content max-content 20px 60px;
     width: 85%;
     max-width: 300px;
     margin-bottom: 0px;
+}
+
+form div p {
+    color: var(--text-color-error);
+    font-size: 0.75rem;
+    line-height: 15px;
+    margin-bottom: 0px;
+    text-align: justify;
 }
 
 #forgotPassword {
@@ -330,7 +338,7 @@ header h1 {
     display: grid;
     gap: 20px;
     grid-template-columns: 100%;
-    grid-template-rows: 60px 60px 60px;
+    grid-template-rows: repeat(3, max-content);
     width: 85%;
     max-width: 300px;
     margin-bottom: 0px;
@@ -425,8 +433,8 @@ span > .add {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
-    font-size: small;
-    line-height: 16px;
+    font-size: 0.75rem;
+    line-height: 15px;
     margin: 0px;
 }
 

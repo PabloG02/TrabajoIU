@@ -163,6 +163,7 @@ function resetModalContents(){
 
 function addErrorMessageNearField(errorCode, errorType) {
     const errorP = document.getElementById(`${errorType}Error`);
+    errorP.dataset.textId = errorCode;
     
     try {
         errorP.innerText = locale[errorCode];

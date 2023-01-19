@@ -14,16 +14,16 @@ function checkUsername(action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(userField)){
-        addErrorMessageNearField('error_username_empty', 'usuario');
+        addErrorMessageNearField('error_username_empty', 'username');
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(userField, minLength)){
-        addErrorMessageNearField('error_username_too_short', "usuario");
+        addErrorMessageNearField('error_username_too_short', "username");
         errorDetected = true;
     } else if (checkMaxLenght(userField, maxLength)) {
-        addErrorMessageNearField('error_username_too_long', "usuario");
+        addErrorMessageNearField('error_username_too_long', "username");
         errorDetected = true;
     } else if (checkRegex(userField, "[^a-zA-Z0-9]")) {
-        addErrorMessageNearField('error_username_invalid_characters', "usuario");
+        addErrorMessageNearField('error_username_invalid_characters', "username");
         errorDetected = true;
     }
 
@@ -33,7 +33,7 @@ function checkUsername(action) {
     } else {
         userField.classList.remove('error');
         userField.classList.add('correct');
-        removeErrorMessageNearField('usuario');
+        removeErrorMessageNearField('username');
     }
 
     return !errorDetected;
@@ -76,16 +76,16 @@ function checkPasswordCustom(fieldId, action) {
     let errorDetected = false;
 
     if(action != 'SEARCH' && isEmpty(passwordField)){
-        addErrorMessageNearField('error_password_empty', "password");
+        addErrorMessageNearField('error_password_empty', fieldId);
         errorDetected = true;
     } else if(action != 'SEARCH' && checkMinLenght(passwordField, minLength)){
-        addErrorMessageNearField('error_password_too_short', "password");
+        addErrorMessageNearField('error_password_too_short', fieldId);
         errorDetected = true;
     } else if (checkMaxLenght(passwordField, maxLength)) {
-        addErrorMessageNearField('error_password_too_long', "password");
+        addErrorMessageNearField('error_password_too_long', fieldId);
         errorDetected = true;
     } else if (checkRegex(passwordField, "[^a-zA-Z0-9\\-_]")) {
-        addErrorMessageNearField('error_password_invalid_characters', "password");
+        addErrorMessageNearField('error_password_invalid_characters', fieldId);
         errorDetected = true;
     }
 
@@ -95,7 +95,7 @@ function checkPasswordCustom(fieldId, action) {
     } else {
         passwordField.classList.remove('error');
         passwordField.classList.add('correct');
-        removeErrorMessageNearField('password');
+        removeErrorMessageNearField(fieldId);
     }
 
     return !errorDetected;

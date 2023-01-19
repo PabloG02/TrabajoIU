@@ -47,7 +47,13 @@ async function populatePage(language){
         for(let error of errors){
             error.innerText = locale[`${error.id}`];
         }
-    } 
+    }
+
+    let ps = document.getElementsByTagName('p');
+    for(let p of ps){
+        if(p.dataset.textId != undefined && p.dataset.textId != '')
+            p.innerText = locale[`${p.dataset.textId}`];
+    }
 
     // Refactored :)
     let title = document.getElementsByTagName('title')[0];
