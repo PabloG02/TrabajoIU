@@ -93,11 +93,11 @@ function populateRow(tableElement, roles, functionality, action, rolAccFun){
     for(let i = 0; i < roles.length; i++){
         if(rolesWithPermissions.includes(roles[i].id_rol)){
             //disable 0
-            cells[i+2].innerHTML = '<img src="images/plus_color_green.svg" class="svg add imageButtonDisabled" translate="no" data-text-id="addTitle"> <img src="images/minus_color_red.svg" class="svg delete">';
+            cells[i+2].innerHTML = '<img src="images/plus_color_green.svg" class="svg add imageButtonDisabled" translate="no" data-text-id="addTitle"> <img src="images/minus_color_red.svg" class="svg delete" translate="no" data-text-id="deleteTitle">';
             cells[i+2].children[1].addEventListener('click', (e) => {changeRolAccFun(e, roles[i].id_rol, functionality.id_funcionalidad, action.id_accion);});
         } else {
             //disable 1
-            cells[i+2].innerHTML = '<img src="images/plus_color_green.svg" class="svg add" translate="no" data-text-id="addTitle"> <img src="images/minus_color_red.svg" class="svg delete imageButtonDisabled">';
+            cells[i+2].innerHTML = '<img src="images/plus_color_green.svg" class="svg add" translate="no" data-text-id="addTitle"> <img src="images/minus_color_red.svg" class="svg delete imageButtonDisabled" translate="no" data-text-id="deleteTitle">';
             cells[i+2].children[0].addEventListener('click', (e) => {changeRolAccFun(e, roles[i].id_rol, functionality.id_funcionalidad, action.id_accion);});
         }
     }
