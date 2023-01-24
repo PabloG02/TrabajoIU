@@ -134,7 +134,7 @@ function createForm(fieldsContent, action){
     let actionSelect = document.createElement('select');
     let submitButton = document.createElement('img');
     let actionErrorMessage = document.createElement('p');
-    actionErrorMessage.id = `roleIdError`;
+    actionErrorMessage.id = `actionIdError`;
 
     form.method = 'dialog';
 
