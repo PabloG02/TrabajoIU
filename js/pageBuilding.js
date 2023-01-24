@@ -174,7 +174,7 @@ function addErrorMessageNearField(errorCode, errorType) {
     }
 }
 
-function addErrorMessage(errorCode, errorType) {
+/* function addErrorMessageOriginal(errorCode, errorType) {
     const errorDiv = document.getElementById("error-messages");
     errorDiv.style.display = "block";
 
@@ -207,6 +207,40 @@ function addErrorMessage(errorCode, errorType) {
     }
 
     if (errorType !== 'request-error') removeErrorMessage('request-error');
+} */
+
+function addErrorMessage(errorCode, errorType) {
+    const modalBg = document.createElement('div');
+    modalBg.className = "modal";
+    modalBg.style.display = "block";
+    modalBg.style.zIndex = 2;
+    const errorDiv = document.createElement('div');
+    errorDiv.id = "error-messages";
+    errorDiv.style.display = "flex";
+    errorDiv.style.justifyContent = "center";
+
+    let error = document.createElement('p');
+    error.ariaLabel = errorType;
+    error.id = errorCode;
+    try {
+        error.innerText = locale[errorCode];
+    } catch (err) {
+        console.error('Locale files did not arrive in time');
+        console.error(err);
+        error.innerText = errorCode;
+    }
+
+    errorDiv.appendChild(error);
+    modalBg.appendChild(errorDiv);
+    document.body.appendChild(modalBg);
+
+    controller = new AbortController();
+    window.addEventListener('click', (e) => {
+        if(e.target == modalBg){
+            document.body.removeChild(modalBg);
+            controller.abort();
+        }
+    }, {signal: controller.signal});
 }
 
 function addSuccessMessage(successCode) {

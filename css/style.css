@@ -518,9 +518,9 @@ input[type="text"]:read-only, input[type="date"]:read-only {
 
 #error-messages {
     display: none;
-    width: 85%;
-    max-width: 1000px;
-    margin: 20px auto;
+    width: max-content;
+    max-width: 85%;
+    margin: 25vh auto;
     padding: 10px 30px;
     margin-bottom: 15px;
     background-color: var(--div-color-error);
