@@ -10,6 +10,15 @@ dniField.addEventListener("blur", checkDNI);
 oldPasswordField.addEventListener("blur", () => checkPasswordCustom('oldPassword'));
 newPasswordField.addEventListener("blur", () => checkPasswordCustom('newPassword'));
 
+customRequestAjaxPromise('usuario', 'SEARCH', `usuario=${getCookie('user')}`).then((res) => {
+    console.log(res);
+    dniField.readOnly = true;
+    dniField.value = res.resource[0].dni
+}).catch((res) => {
+    console.log(res.code);
+    addErrorMessage(res.code, 'request-error');
+});
+
 let submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
     if(checkDNI() & checkPasswordCustom('oldPassword') & checkPasswordCustom('newPassword')){

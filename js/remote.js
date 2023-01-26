@@ -168,9 +168,9 @@ async function requestAjaxSEARCHRolAccFun(){
     let functionalities = await requestAjaxSEARCHPromiseRolAccFun('funcionalidad', 'SEARCH', 'functionalityId').then((res) => res);
     let rolAccFun = await requestAjaxPromise('rolaccionfuncionalidad', 'SEARCH').then((res) => res);
 
-    addSuccessMessage(roles.code);
-    addSuccessMessage(actions.code);
-    addSuccessMessage(functionalities.code);
+    //addSuccessMessage(roles.code);
+    //addSuccessMessage(actions.code);
+    //addSuccessMessage(functionalities.code);
     addSuccessMessage(rolAccFun.code);
     /* Update table to show the new data */
     console.log('Reset table');
