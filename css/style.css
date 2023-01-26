@@ -467,10 +467,12 @@ input[type="text"]:read-only, input[type="date"]:read-only {
 
 .correct {
     background-color: var(--div-color-success);
+    border-bottom: 1.5px solid rgb(0, 141, 75);
 }
 
 .error {
     background-color: var(--div-color-error);
+    border-bottom: 1.5px solid rgb(141, 0, 0);
 }
 
 
